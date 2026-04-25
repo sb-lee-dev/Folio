@@ -1,7 +1,14 @@
+
+
 export default function ProfilePage() {
   return (
     <>
-      <p>this is ProfilePage</p>
+      <div className='user-info'>
+
+      </div>
+      <div className='skills-section'>
+
+      </div>
     </>
   );
 }
