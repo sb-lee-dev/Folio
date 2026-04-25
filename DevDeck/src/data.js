@@ -1,4 +1,3 @@
-// data.js — just YOUR data
 export const profile = {
   name: "Shu Ma Wa Win Htun",
   bio: "CPA student at Seneca Polytechnic",
