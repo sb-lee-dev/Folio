@@ -13,7 +13,9 @@ export default function RoadmapEditView({
 
   const sendData = () => {
     setOriginData((prev) =>
-      prev.map((origin) => (origin.id === copy.id ? { ...copy } : origin)),
+      prev.map((origin) =>
+        origin.id === copy.id ? { ...copy, isNew: false } : origin,
+      ),
     );
 
     setModifyMode(false);
@@ -29,7 +31,9 @@ export default function RoadmapEditView({
     setOriginData((prev) => prev.filter((origin) => origin.id !== data.id));
   };
 
-  return (
+  console.log(copy);
+
+  return !copy.isNew ? (
     <div className="roadmap-skill-container">
       <div className="roadmap-skill-left">
         <div className="roadmap-dot" style={{ backgroundColor: copy.bColor }} />
@@ -44,7 +48,7 @@ export default function RoadmapEditView({
       </div>
       <div className="roadmap-skill-right">
         <RoadmapProgressButton
-          statusData={copy.status}
+          statusData={copy.progress}
           modifyMode={modifyMode}
           onChangeHandler={onChangeHandler}
         />
@@ -66,6 +70,36 @@ export default function RoadmapEditView({
           onClick={deleteItem}
         >
           <Trash2 size={18} color="red" />
+        </button>
+      </div>
+    </div>
+  ) : (
+    <div className="roadmap-skill-container">
+      <div className="roadmap-skill-left">
+        <div className="roadmap-dot" style={{ backgroundColor: copy.bColor }} />
+        <div>
+          <div className="roadmap-skill-title">
+            <input name="title" value={copy.title} onChange={onChangeHandler} />
+          </div>
+          <div className="roadmap-skill-desc">
+            <input name="desc" value={copy.desc} onChange={onChangeHandler} />
+          </div>
+        </div>
+      </div>
+      <div className="roadmap-skill-right">
+        <RoadmapProgressButton
+          statusData={copy.progress}
+          modifyMode={modifyMode}
+          isNew={copy.isNew}
+          onChangeHandler={onChangeHandler}
+        />
+
+        <button className="roadmap-skill-right-button" onClick={sendData}>
+          <Check size={18} />
+        </button>
+
+        <button className="roadmap-skill-right-button" onClick={deleteItem}>
+          <X size={18} />
         </button>
       </div>
     </div>

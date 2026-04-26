@@ -4,19 +4,22 @@ export default function RoadmapProgressButton({
   statusData,
   modifyMode,
   onChangeHandler,
+  isNew,
 }) {
   return (
     <div>
-      {!modifyMode ? (
+      {!modifyMode && !isNew ? (
         <button
           className={`status-select status-select-${statusData} status-select-inactivate`}
         >
-          {statusData}
+          {(statusData[0].toUpperCase() + statusData.slice(1))
+            .split("-")
+            .join(" ")}
         </button>
       ) : (
         <select
           className={`status-select status-select-${statusData}`}
-          name="status"
+          name="progress"
           value={statusData}
           onChange={onChangeHandler}
         >

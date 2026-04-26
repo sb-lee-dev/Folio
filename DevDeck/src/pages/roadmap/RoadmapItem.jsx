@@ -6,7 +6,7 @@ import RoadmapEditView from "./RoadmapEditView";
 export default function RoadmapItem({ data, setOriginData }) {
   const [modifyMode, setModifyMode] = useState(false);
 
-  return !modifyMode ? (
+  return !modifyMode && !data.isNew ? (
     <RoadmapDisplayView
       data={data}
       setOriginData={setOriginData}

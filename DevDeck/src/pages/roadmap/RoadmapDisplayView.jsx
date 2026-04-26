@@ -23,7 +23,7 @@ export default function RoadmapDisplayView({
       </div>
       <div className="roadmap-skill-right">
         <RoadmapProgressButton
-          statusData={data.status}
+          statusData={data.progress}
           modifyMode={modifyMode}
         />
         <button
