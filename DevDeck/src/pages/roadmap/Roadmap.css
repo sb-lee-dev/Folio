@@ -1,0 +1,61 @@
+.roadmap-title-container {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.roadmap-title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.roadmap-title-button {
+    font-size: 20px;
+    color: white;
+    border-radius: 10px;
+    padding: 10px 20px;
+    background-color: rgb(76, 51, 185);
+    cursor: pointer;
+}
+
+.roadmap-skills-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    margin-top: 20px;
+    border: 1px solid rgb(221, 216, 216);
+}
+
+.roadmap-skill-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.roadmap-skill-left {
+    display: flex;
+    gap: 15px;
+    padding: 10px 0;
+    align-items: center;
+}
+
+.roadmap-skill-container:last-child {
+    border-bottom: none;
+}
+
+.roadmap-skill-title {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.roadmap-skill-desc {
+    font-size: 16px;
+}
+
+.roadmap-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+}
