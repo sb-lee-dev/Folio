@@ -5,6 +5,7 @@ export default function RoadmapPage() {
   return (
     <>
       <title>Roadmap</title>
+
       <div className="roadmap-title-container">
         <div className="roadmap-title">Learning Roadmap</div>
         <div className="roadmap-title-button">+ Add topic</div>

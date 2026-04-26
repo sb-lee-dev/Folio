@@ -5,3 +5,28 @@
     padding: 7px 15px;
     border-radius: 25px;
 }
+
+.status-select {
+  width: 120px;
+  padding: 8px 14px;
+  border-radius: 100px;
+  border: 1px solid #ddd;
+  background-color: #eaf6df;
+  color: #285f13;
+  font-weight: 600;
+}
+
+.status-select-done {
+  background-color: #eaf6df;
+  color: #285f13;
+}
+
+.status-select-learning {
+  background-color: #f9ead4;
+  color: #6b3d00;
+}
+
+.status-select-not-started {
+  background-color: #eeeeeb;
+  color: #444;
+}
