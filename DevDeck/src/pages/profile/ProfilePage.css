@@ -1,0 +1,49 @@
+.profile-section {
+  display: flex;
+  border: 1px solid #e0e0e0;
+  background-color: white;
+  border-radius: 12px;
+  padding: 20px;
+  gap: 24px;
+  margin-top: 20px;
+}
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #eeedfe;
+  color: #3c3489;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  font-size: 16px;
+}
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.profile-info h3,
+.profile-info p {
+  margin: 0;
+}
+.profile-info p, 
+.profile-info a {
+    font-size: 15px;
+}
+.profile-info a {
+    text-decoration: none;
+    color: #3c3489;
+    border:  0.5px solid #d0cfcf;
+    padding: 8px 10px;
+    border-radius: 8px;
+}
+.links {
+    display: flex;
+    gap: 12px;
+}
+.profile-info a:hover {
+  background-color: rgb(233, 233, 228);
+  color: #3c3489; 
+}
