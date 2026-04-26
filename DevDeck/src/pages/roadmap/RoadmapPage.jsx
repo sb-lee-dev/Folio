@@ -1,7 +1,11 @@
-import "./Roadmap.css";
-import RoadmapProgressButton from "./RoadmapProgressButton";
+import "./RoadmapPage.css";
+import RoadmapItem from "./RoadmapItem";
+import { users } from "../../data";
+import { useState } from "react";
 
 export default function RoadmapPage() {
+  const [originData, setOriginData] = useState(users[1].roadmap);
+
   return (
     <>
       <title>Roadmap</title>
@@ -11,51 +15,19 @@ export default function RoadmapPage() {
         <div className="roadmap-title-button">+ Add topic</div>
       </div>
       <div className="roadmap-skills-container">
-        <div className="roadmap-skill-container">
-          <div className="roadmap-skill-left">
-            <div
-              className="roadmap-dot"
-              style={{ backgroundColor: "greenyellow" }}
-            />
-            <div>
-              <div className="roadmap-skill-title">React hooks</div>
-              <div className="roadmap-skill-desc">
-                useState, useEffect, custom hooks
-              </div>
-            </div>
-          </div>
-          <RoadmapProgressButton />
-        </div>
-        <div className="roadmap-skill-container">
-          <div className="roadmap-skill-left">
-            <div
-              className="roadmap-dot"
-              style={{ backgroundColor: "purple" }}
-            />
-            <div>
-              <div className="roadmap-skill-title">React Router</div>
-              <div className="roadmap-skill-desc">
-                Client-side routing and navigation
-              </div>
-            </div>
-          </div>
-          <RoadmapProgressButton />
-        </div>
-        <div className="roadmap-skill-container">
-          <div className="roadmap-skill-left">
-            <div
-              className="roadmap-dot"
-              style={{ backgroundColor: "darkgray" }}
-            />
-            <div>
-              <div className="roadmap-skill-title">Node.js + Express</div>
-              <div className="roadmap-skill-desc">
-                Backend APIs - starts next semester
-              </div>
-            </div>
-          </div>
-          <RoadmapProgressButton />
-        </div>
+        {originData.length > 0 ? (
+          originData.map((data) => {
+            return (
+              <RoadmapItem
+                key={data.id}
+                data={data}
+                setOriginData={setOriginData}
+              />
+            );
+          })
+        ) : (
+          <div className="roadmap-display-empty">There is no roadmap.</div>
+        )}
       </div>
     </>
   );

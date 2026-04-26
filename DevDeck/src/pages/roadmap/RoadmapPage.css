@@ -27,35 +27,7 @@
     border: 1px solid rgb(221, 216, 216);
 }
 
-.roadmap-skill-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #e0e0e0;
+.roadmap-display-empty {
+    text-align: center;
 }
 
-.roadmap-skill-left {
-    display: flex;
-    gap: 15px;
-    padding: 10px 0;
-    align-items: center;
-}
-
-.roadmap-skill-container:last-child {
-    border-bottom: none;
-}
-
-.roadmap-skill-title {
-    font-size: 20px;
-    margin-bottom: 5px;
-}
-
-.roadmap-skill-desc {
-    font-size: 16px;
-}
-
-.roadmap-dot {
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-}
