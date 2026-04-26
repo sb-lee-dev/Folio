@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { users } from "../../data";
 import "./ProfilePage.css";
+import ProfileEditView from "./ProfileEditView";
 
 function getInitials(name) {
   return name
@@ -12,25 +13,39 @@ function getInitials(name) {
 
 export default function ProfilePage() {
   const [profileData] = useState(users[1].profile);
+  const [isEditing, setIsEditing] = useState(false);
 
   return (
     <div className="profile-page">
-      <div className="profile-section">
-        <div className="avatar">{getInitials(profileData.name)}</div>
-        <div className="profile-info">
-          <h3>{profileData.name}</h3>
-          <p>{profileData.school}</p>
-          <p>{profileData.bio}</p>
-          <div className="links">
-            <a href={profileData.github} target="_blank">
-              GitHub
-            </a>
-            <a href={profileData.linkedin} target="_blank">
-              LinkedIn
-            </a>
+      {isEditing ? (
+        <ProfileEditView
+          profileData={profileData}
+          setIsEditing={setIsEditing}
+        />
+      ) : (
+        <div className="profile-section">
+          <div className="avatar">{getInitials(profileData.name)}</div>
+          <div className="profile-info">
+            <h3>{profileData.name}</h3>
+            <p>{profileData.school}</p>
+            <p>{profileData.bio}</p>
+            <div className="links">
+              <a href={profileData.github} target="_blank">
+                GitHub
+              </a>
+              <a href={profileData.linkedin} target="_blank">
+                LinkedIn
+              </a>
+            </div>
+          </div>
+          <div
+            className="edit-profile-button"
+            onClick={() => setIsEditing(true)}
+          >
+            Edit
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
