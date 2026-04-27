@@ -3,6 +3,7 @@ import { Trash2, Check, X } from "lucide-react";
 import "./RoadmapEditView.css";
 import { useRef, useState } from "react";
 import axios from "axios";
+import { sortRoadmap } from "../../utils/sortRoadmap";
 
 export default function RoadmapEditView({
   data,
@@ -21,11 +22,12 @@ export default function RoadmapEditView({
     if (!descRef.current.reportValidity()) return;
 
     setUser((prev) => {
+      const newRoadmap = prev.roadmap.map((origin) =>
+        origin.id === copy.id ? { ...copy, isNew: false } : origin,
+      );
       const updated = {
         ...prev,
-        roadmap: prev.roadmap.map((origin) =>
-          origin.id === copy.id ? { ...copy, isNew: false } : origin,
-        ),
+        roadmap: sortRoadmap(newRoadmap),
       };
       axios.put(`${API_BASE_URL}/users/${prev.id}`, updated);
 
