@@ -6,8 +6,8 @@ import { useState } from "react";
 export default function RoadmapEditView({
   data,
   setOriginData,
-  setModifyMode,
-  modifyMode,
+  setIsEditing,
+  isEditing,
 }) {
   const [copy, setCopy] = useState(data);
 
@@ -18,7 +18,7 @@ export default function RoadmapEditView({
       ),
     );
 
-    setModifyMode(false);
+    setIsEditing(false);
   };
 
   const onChangeHandler = (e) => {
@@ -30,8 +30,6 @@ export default function RoadmapEditView({
   const deleteItem = () => {
     setOriginData((prev) => prev.filter((origin) => origin.id !== data.id));
   };
-
-  console.log(copy);
 
   return !copy.isNew ? (
     <div className="roadmap-skill-container">
@@ -49,7 +47,7 @@ export default function RoadmapEditView({
       <div className="roadmap-skill-right">
         <RoadmapProgressButton
           statusData={copy.progress}
-          modifyMode={modifyMode}
+          isEditing={isEditing}
           onChangeHandler={onChangeHandler}
         />
 
@@ -59,7 +57,7 @@ export default function RoadmapEditView({
 
         <button
           className="roadmap-skill-right-button"
-          onClick={() => setModifyMode(false)}
+          onClick={() => setIsEditing(false)}
         >
           <X size={18} />
         </button>
@@ -79,17 +77,27 @@ export default function RoadmapEditView({
         <div className="roadmap-dot" style={{ backgroundColor: copy.bColor }} />
         <div>
           <div className="roadmap-skill-title">
-            <input name="title" value={copy.title} onChange={onChangeHandler} />
+            <input
+              name="title"
+              placeholder="Title"
+              value={copy.title}
+              onChange={onChangeHandler}
+            />
           </div>
           <div className="roadmap-skill-desc">
-            <input name="desc" value={copy.desc} onChange={onChangeHandler} />
+            <input
+              name="desc"
+              placeholder="Description"
+              value={copy.desc}
+              onChange={onChangeHandler}
+            />
           </div>
         </div>
       </div>
       <div className="roadmap-skill-right">
         <RoadmapProgressButton
           statusData={copy.progress}
-          modifyMode={modifyMode}
+          isEditing={isEditing}
           isNew={copy.isNew}
           onChangeHandler={onChangeHandler}
         />

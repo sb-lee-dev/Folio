@@ -2,13 +2,13 @@ import "./RoadmapProgressButton.css";
 
 export default function RoadmapProgressButton({
   statusData,
-  modifyMode,
+  isEditing,
   onChangeHandler,
   isNew,
 }) {
   return (
     <div>
-      {!modifyMode && !isNew ? (
+      {!isEditing && !isNew ? (
         <button
           className={`status-select status-select-${statusData} status-select-inactivate`}
         >

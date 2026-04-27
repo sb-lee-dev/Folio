@@ -5,8 +5,8 @@ import "./RoadmapDisplayView.css";
 export default function RoadmapDisplayView({
   data,
   setOriginData,
-  setModifyMode,
-  modifyMode,
+  setIsEditing,
+  isEditing,
 }) {
   const deleteItem = () => {
     setOriginData((prev) => prev.filter((origin) => origin.id !== data.id));
@@ -24,11 +24,11 @@ export default function RoadmapDisplayView({
       <div className="roadmap-skill-right">
         <RoadmapProgressButton
           statusData={data.progress}
-          modifyMode={modifyMode}
+          isEditing={isEditing}
         />
         <button
           className="roadmap-skill-right-button"
-          onClick={() => setModifyMode(true)}
+          onClick={() => setIsEditing(true)}
         >
           <Pencil size={18} />
         </button>
