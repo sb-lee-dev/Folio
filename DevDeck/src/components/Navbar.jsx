@@ -1,7 +1,9 @@
-import { Link } from "react-router";
+import { Link, useParams } from "react-router";
 import "./Navbar.css";
 
 export default function NavBar() {
+  const { userId } = useParams();
+
   return (
     <>
       <div className="nav-bar">
@@ -11,16 +13,16 @@ export default function NavBar() {
           </span>
         </div>
         <div className="left-section">
-          <Link className="nav-link" to="/profile">
+          <Link className="nav-link" to={`/profile/${userId}`}>
             Profile
           </Link>
-          <Link className="nav-link" to="/projects">
+          <Link className="nav-link" to={`/projects/${userId}`}>
             Projects
           </Link>
-          <Link className="nav-link" to="/roadmap">
+          <Link className="nav-link" to={`/roadmap/${userId}`}>
             Roadmap
           </Link>
-          <Link className="nav-link" to="/public">
+          <Link className="nav-link" to={`/public/${userId}`}>
             Public
           </Link>
         </div>
