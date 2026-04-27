@@ -1,12 +1,16 @@
 import { useState } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 import "./ProfileEditView.css";
 
 export default function ProfileEditView({
-  profileData,
+  userData,
   setIsEditing,
-  setProfileData,
+  setUserData,
 }) {
-  const [copyProfileData, setCopyProfileData] = useState(profileData);
+  const [copyProfileData, setCopyProfileData] = useState(userData);
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+  const { userId } = useParams();
 
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
@@ -14,8 +18,11 @@ export default function ProfileEditView({
     setCopyProfileData({ ...copyProfileData, [name]: value });
   };
 
-  const saveProfileData = () => {
-    setProfileData(copyProfileData);
+  const saveProfileData = async () => {
+    await axios.put(`${API_BASE_URL}/users/${userId}`, {
+      profile: copyProfileData,
+    });
+    setUserData(copyProfileData);
     setIsEditing(false);
   };
 

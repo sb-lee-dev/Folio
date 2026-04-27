@@ -1,5 +1,6 @@
-import { useState } from "react";
-import { users } from "../../data";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 import "./ProfilePage.css";
 import ProfileEditView from "./ProfileEditView";
 
@@ -12,29 +13,41 @@ function getInitials(name) {
 }
 
 export default function ProfilePage() {
-  const [profileData, setProfileData] = useState(users[1].profile);
+  const { userId } = useParams();
+  const [userData, setUserData] = useState({});
   const [isEditing, setIsEditing] = useState(false);
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
+  useEffect(() => {
+    const getUserProfile = async () => {
+      const response = await axios.get(`${API_BASE_URL}/users/${userId}`);
+      setUserData(response.data.profile);
+    };
+    getUserProfile();
+  }, [userId]);
 
   return (
     <div className="profile-page">
       {isEditing ? (
         <ProfileEditView
-          profileData={profileData}
+          userData={userData}
           setIsEditing={setIsEditing}
-          setProfileData={setProfileData}
+          setUserData={setUserData}
         />
       ) : (
         <div className="profile-section">
-          <div className="avatar">{getInitials(profileData.name)}</div>
+          <div className="avatar">
+            {userData.name ? getInitials(userData.name) : getInitials("")}
+          </div>
           <div className="profile-info">
-            <h3>{profileData.name}</h3>
-            <p>{profileData.school}</p>
-            <p>{profileData.bio}</p>
+            <h3>{userData.name}</h3>
+            <p>{userData.school}</p>
+            <p>{userData.bio}</p>
             <div className="links">
-              <a href={profileData.github} target="_blank">
+              <a href={userData.github} target="_blank">
                 GitHub
               </a>
-              <a href={profileData.linkedin} target="_blank">
+              <a href={userData.linkedin} target="_blank">
                 LinkedIn
               </a>
             </div>
