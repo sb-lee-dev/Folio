@@ -1,15 +1,27 @@
 import { Pencil, Trash2 } from "lucide-react";
 import RoadmapProgressButton from "./RoadmapProgressButton";
 import "./RoadmapDisplayView.css";
+import axios from "axios";
 
 export default function RoadmapDisplayView({
   data,
-  setOriginData,
+  setUser,
   setIsEditing,
   isEditing,
 }) {
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
   const deleteItem = () => {
-    setOriginData((prev) => prev.filter((origin) => origin.id !== data.id));
+    setUser((prev) => {
+      const updated = {
+        ...prev,
+        roadmap: prev.roadmap.filter((item) => item.id !== data.id),
+      };
+
+      axios.put(`${API_BASE_URL}/users/${prev.id}`, updated);
+
+      return updated;
+    });
   };
 
   return (

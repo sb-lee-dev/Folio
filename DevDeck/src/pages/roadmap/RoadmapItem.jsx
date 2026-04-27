@@ -3,20 +3,20 @@ import "./RoadmapItem.css";
 import RoadmapDisplayView from "./RoadmapDisplayView";
 import RoadmapEditView from "./RoadmapEditView";
 
-export default function RoadmapItem({ data, setOriginData }) {
+export default function RoadmapItem({ data, setUser }) {
   const [isEditing, setIsEditing] = useState(false);
 
   return !isEditing && !data.isNew ? (
     <RoadmapDisplayView
       data={data}
-      setOriginData={setOriginData}
+      setUser={setUser}
       setIsEditing={setIsEditing}
       isEditing={isEditing}
     />
   ) : (
     <RoadmapEditView
       data={data}
-      setOriginData={setOriginData}
+      setUser={setUser}
       setIsEditing={setIsEditing}
       isEditing={isEditing}
     />
