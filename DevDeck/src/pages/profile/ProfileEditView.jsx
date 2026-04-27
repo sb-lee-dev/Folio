@@ -4,11 +4,11 @@ import axios from "axios";
 import "./ProfileEditView.css";
 
 export default function ProfileEditView({
-  userData,
+  userProfileData,
   setIsEditing,
-  setUserData,
+  setUserProfileData,
 }) {
-  const [copyProfileData, setCopyProfileData] = useState(userData);
+  const [copyProfileData, setCopyProfileData] = useState(userProfileData);
   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
   const { userId } = useParams();
 
@@ -22,7 +22,10 @@ export default function ProfileEditView({
     await axios.put(`${API_BASE_URL}/users/${userId}`, {
       profile: copyProfileData,
     });
-    setUserData(copyProfileData);
+    setUserProfileData((prev) => ({
+      ...prev,
+      profile: copyProfileData,
+    }));
     setIsEditing(false);
   };
 
