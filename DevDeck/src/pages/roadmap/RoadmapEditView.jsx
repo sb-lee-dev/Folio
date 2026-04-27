@@ -1,7 +1,7 @@
 import RoadmapProgressButton from "./RoadmapProgressButton";
 import { Trash2, Check, X } from "lucide-react";
 import "./RoadmapEditView.css";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import axios from "axios";
 
 export default function RoadmapEditView({
@@ -13,8 +13,13 @@ export default function RoadmapEditView({
   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
   const [copy, setCopy] = useState(data);
+  const titleRef = useRef(null);
+  const descRef = useRef(null);
 
   const addItem = () => {
+    if (!titleRef.current.reportValidity()) return;
+    if (!descRef.current.reportValidity()) return;
+
     setUser((prev) => {
       const updated = {
         ...prev,
@@ -55,10 +60,22 @@ export default function RoadmapEditView({
         <div className="roadmap-dot" style={{ backgroundColor: copy.bColor }} />
         <div>
           <div className="roadmap-skill-title">
-            <input name="title" value={copy.title} onChange={onChangeHandler} />
+            <input
+              name="title"
+              ref={titleRef}
+              required
+              value={copy.title}
+              onChange={onChangeHandler}
+            />
           </div>
           <div className="roadmap-skill-desc">
-            <input name="desc" value={copy.desc} onChange={onChangeHandler} />
+            <input
+              name="desc"
+              ref={descRef}
+              required
+              value={copy.desc}
+              onChange={onChangeHandler}
+            />
           </div>
         </div>
       </div>
@@ -97,6 +114,8 @@ export default function RoadmapEditView({
           <div className="roadmap-skill-title">
             <input
               name="title"
+              ref={titleRef}
+              required
               placeholder="Title"
               value={copy.title}
               onChange={onChangeHandler}
@@ -105,6 +124,8 @@ export default function RoadmapEditView({
           <div className="roadmap-skill-desc">
             <input
               name="desc"
+              ref={descRef}
+              required
               placeholder="Description"
               value={copy.desc}
               onChange={onChangeHandler}
