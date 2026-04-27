@@ -3,6 +3,7 @@ import RoadmapItem from "./RoadmapItem";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { sortRoadmap } from "../../utils/sortRoadmap";
 
 export default function RoadmapPage() {
   const { userId } = useParams();
@@ -12,12 +13,16 @@ export default function RoadmapPage() {
   useEffect(() => {
     const getUser = async () => {
       const response = await axios.get(`${API_BASE_URL}/users/${userId}`);
-
-      setUser(response.data);
+      setUser({
+        ...response.data,
+        roadmap: sortRoadmap(response.data.roadmap),
+      });
     };
 
     getUser();
   }, [userId]);
+
+  console.log(user);
 
   const addRoadmap = () => {
     setUser({

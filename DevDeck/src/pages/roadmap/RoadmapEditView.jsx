@@ -1,8 +1,9 @@
 import RoadmapProgressButton from "./RoadmapProgressButton";
 import { Trash2, Check, X } from "lucide-react";
 import "./RoadmapEditView.css";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import axios from "axios";
+import { sortRoadmap } from "../../utils/sortRoadmap";
 
 export default function RoadmapEditView({
   data,
@@ -13,13 +14,25 @@ export default function RoadmapEditView({
   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
   const [copy, setCopy] = useState(data);
+  const titleRef = useRef(null);
+  const descRef = useRef(null);
 
-  const sendData = () => {
-    setUser((prev) =>
-      prev.map((origin) =>
+  const addItem = () => {
+    if (!titleRef.current.reportValidity()) return;
+    if (!descRef.current.reportValidity()) return;
+
+    setUser((prev) => {
+      const newRoadmap = prev.roadmap.map((origin) =>
         origin.id === copy.id ? { ...copy, isNew: false } : origin,
-      ),
-    );
+      );
+      const updated = {
+        ...prev,
+        roadmap: sortRoadmap(newRoadmap),
+      };
+      axios.put(`${API_BASE_URL}/users/${prev.id}`, updated);
+
+      return updated;
+    });
 
     setIsEditing(false);
   };
@@ -49,10 +62,22 @@ export default function RoadmapEditView({
         <div className="roadmap-dot" style={{ backgroundColor: copy.bColor }} />
         <div>
           <div className="roadmap-skill-title">
-            <input name="title" value={copy.title} onChange={onChangeHandler} />
+            <input
+              name="title"
+              ref={titleRef}
+              required
+              value={copy.title}
+              onChange={onChangeHandler}
+            />
           </div>
           <div className="roadmap-skill-desc">
-            <input name="desc" value={copy.desc} onChange={onChangeHandler} />
+            <input
+              name="desc"
+              ref={descRef}
+              required
+              value={copy.desc}
+              onChange={onChangeHandler}
+            />
           </div>
         </div>
       </div>
@@ -63,7 +88,7 @@ export default function RoadmapEditView({
           onChangeHandler={onChangeHandler}
         />
 
-        <button className="roadmap-skill-right-button" onClick={sendData}>
+        <button className="roadmap-skill-right-button" onClick={addItem}>
           <Check size={18} />
         </button>
 
@@ -91,6 +116,8 @@ export default function RoadmapEditView({
           <div className="roadmap-skill-title">
             <input
               name="title"
+              ref={titleRef}
+              required
               placeholder="Title"
               value={copy.title}
               onChange={onChangeHandler}
@@ -99,6 +126,8 @@ export default function RoadmapEditView({
           <div className="roadmap-skill-desc">
             <input
               name="desc"
+              ref={descRef}
+              required
               placeholder="Description"
               value={copy.desc}
               onChange={onChangeHandler}
@@ -114,7 +143,7 @@ export default function RoadmapEditView({
           onChangeHandler={onChangeHandler}
         />
 
-        <button className="roadmap-skill-right-button" onClick={sendData}>
+        <button className="roadmap-skill-right-button" onClick={addItem}>
           <Check size={18} />
         </button>
 
