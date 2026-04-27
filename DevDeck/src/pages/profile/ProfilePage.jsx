@@ -12,7 +12,7 @@ function getInitials(name) {
 }
 
 export default function ProfilePage() {
-  const [profileData] = useState(users[1].profile);
+  const [profileData, setProfileData] = useState(users[1].profile);
   const [isEditing, setIsEditing] = useState(false);
 
   return (
@@ -21,6 +21,7 @@ export default function ProfilePage() {
         <ProfileEditView
           profileData={profileData}
           setIsEditing={setIsEditing}
+          setProfileData={setProfileData}
         />
       ) : (
         <div className="profile-section">
