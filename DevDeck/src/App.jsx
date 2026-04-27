@@ -5,16 +5,49 @@ import ProfilePage from "./pages/profile/ProfilePage";
 import ProjectsPage from "./pages/projects/ProjectsPage";
 import RoadmapPage from "./pages/roadmap/RoadmapPage";
 import PublicPage from "./pages/public/PublicPage";
+import UserSelector from "./pages/user-select/UserSelectorPage";
 
 function App() {
   return (
     <div className="app">
-      <Navbar /> 
       <Routes>
-        <Route path="/public" element={<PublicPage />} />
-        <Route path="/" element={<ProfilePage />} />
-        <Route path="/projects" element={<ProjectsPage />} />
-        <Route path="/roadmap" element={<RoadmapPage />} />
+        <Route path="/" element={<UserSelector />} />
+        <Route
+          path="/public/:userId"
+          element={
+            <>
+              <Navbar />
+              <PublicPage />
+            </>
+          }
+        />
+        <Route
+          path="/profile/:userId"
+          element={
+            <>
+              <Navbar />
+              <ProfilePage />
+            </>
+          }
+        />
+        <Route
+          path="/projects/:userId"
+          element={
+            <>
+              <Navbar />
+              <ProjectsPage />
+            </>
+          }
+        />
+        <Route
+          path="/roadmap/:userId"
+          element={
+            <>
+              <Navbar />
+              <RoadmapPage />
+            </>
+          }
+        />
       </Routes>
     </div>
   );

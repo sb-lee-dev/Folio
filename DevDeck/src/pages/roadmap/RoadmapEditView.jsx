@@ -2,17 +2,20 @@ import RoadmapProgressButton from "./RoadmapProgressButton";
 import { Trash2, Check, X } from "lucide-react";
 import "./RoadmapEditView.css";
 import { useState } from "react";
+import axios from "axios";
 
 export default function RoadmapEditView({
   data,
-  setOriginData,
+  setUser,
   setIsEditing,
   isEditing,
 }) {
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
   const [copy, setCopy] = useState(data);
 
   const sendData = () => {
-    setOriginData((prev) =>
+    setUser((prev) =>
       prev.map((origin) =>
         origin.id === copy.id ? { ...copy, isNew: false } : origin,
       ),
@@ -28,7 +31,16 @@ export default function RoadmapEditView({
   };
 
   const deleteItem = () => {
-    setOriginData((prev) => prev.filter((origin) => origin.id !== data.id));
+    setUser((prev) => {
+      const updated = {
+        ...prev,
+        roadmap: prev.roadmap.filter((item) => item.id !== data.id),
+      };
+
+      axios.put(`${API_BASE_URL}/users/${prev.id}`, updated);
+
+      return updated;
+    });
   };
 
   return !copy.isNew ? (

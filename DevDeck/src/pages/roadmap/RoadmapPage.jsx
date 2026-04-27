@@ -1,23 +1,39 @@
 import "./RoadmapPage.css";
 import RoadmapItem from "./RoadmapItem";
-import { users } from "../../data";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 
 export default function RoadmapPage() {
-  const [originData, setOriginData] = useState(users[1].roadmap);
+  const { userId } = useParams();
+  const [user, setUser] = useState(null);
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
+  useEffect(() => {
+    const getUser = async () => {
+      const response = await axios.get(`${API_BASE_URL}/users/${userId}`);
+
+      setUser(response.data);
+    };
+
+    getUser();
+  }, [userId]);
 
   const addRoadmap = () => {
-    setOriginData([
-      {
-        id: Math.random(),
-        title: "",
-        desc: "",
-        progress: "not-started",
-        bColor: "darkgray",
-        isNew: true,
-      },
-      ...originData,
-    ]);
+    setUser({
+      ...user,
+      roadmap: [
+        {
+          id: Math.random(),
+          title: "",
+          desc: "",
+          progress: "not-started",
+          bColor: "darkgray",
+          isNew: true,
+        },
+        ...user.roadmap,
+      ],
+    });
   };
 
   return (
@@ -31,15 +47,9 @@ export default function RoadmapPage() {
         </div>
       </div>
       <div className="roadmap-skills-container">
-        {originData.length > 0 ? (
-          originData.map((data) => {
-            return (
-              <RoadmapItem
-                key={data.id}
-                data={data}
-                setOriginData={setOriginData}
-              />
-            );
+        {user && user.roadmap.length > 0 ? (
+          user.roadmap.map((data) => {
+            return <RoadmapItem key={data.id} data={data} setUser={setUser} />;
           })
         ) : (
           <div className="roadmap-display-empty">There is no roadmap.</div>
