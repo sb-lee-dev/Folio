@@ -14,12 +14,18 @@ export default function RoadmapEditView({
 
   const [copy, setCopy] = useState(data);
 
-  const sendData = () => {
-    setUser((prev) =>
-      prev.map((origin) =>
-        origin.id === copy.id ? { ...copy, isNew: false } : origin,
-      ),
-    );
+  const addItem = () => {
+    setUser((prev) => {
+      const updated = {
+        ...prev,
+        roadmap: prev.roadmap.map((origin) =>
+          origin.id === copy.id ? { ...copy, isNew: false } : origin,
+        ),
+      };
+      axios.put(`${API_BASE_URL}/users/${prev.id}`, updated);
+
+      return updated;
+    });
 
     setIsEditing(false);
   };
@@ -63,7 +69,7 @@ export default function RoadmapEditView({
           onChangeHandler={onChangeHandler}
         />
 
-        <button className="roadmap-skill-right-button" onClick={sendData}>
+        <button className="roadmap-skill-right-button" onClick={addItem}>
           <Check size={18} />
         </button>
 
@@ -114,7 +120,7 @@ export default function RoadmapEditView({
           onChangeHandler={onChangeHandler}
         />
 
-        <button className="roadmap-skill-right-button" onClick={sendData}>
+        <button className="roadmap-skill-right-button" onClick={addItem}>
           <Check size={18} />
         </button>
 
