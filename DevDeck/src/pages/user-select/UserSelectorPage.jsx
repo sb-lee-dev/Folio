@@ -5,7 +5,7 @@ import "./UserSelectorPage.css";
 const users = [
   {
     id: 1,
-    name: "Shu ma wa",
+    name: "Shu Ma Wa Win Htun",
     initials: "SM",
   },
   {
