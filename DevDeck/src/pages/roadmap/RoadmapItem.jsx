@@ -4,21 +4,21 @@ import RoadmapDisplayView from "./RoadmapDisplayView";
 import RoadmapEditView from "./RoadmapEditView";
 
 export default function RoadmapItem({ data, setOriginData }) {
-  const [modifyMode, setModifyMode] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
 
-  return !modifyMode && !data.isNew ? (
+  return !isEditing && !data.isNew ? (
     <RoadmapDisplayView
       data={data}
       setOriginData={setOriginData}
-      setModifyMode={setModifyMode}
-      modifyMode={modifyMode}
+      setIsEditing={setIsEditing}
+      isEditing={isEditing}
     />
   ) : (
     <RoadmapEditView
       data={data}
       setOriginData={setOriginData}
-      setModifyMode={setModifyMode}
-      modifyMode={modifyMode}
+      setIsEditing={setIsEditing}
+      isEditing={isEditing}
     />
   );
 }
