@@ -1,0 +1,146 @@
+.projects-title-container {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.projects-title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.projects-title-button {
+    font-size: 20px;
+    color: white;
+    border-radius: 10px;
+    padding: 10px 20px;
+    background-color: rgb(76, 51, 185);
+    cursor: pointer;
+}
+
+.projects-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    margin-top: 20px;
+    border: 1px solid rgb(221, 216, 216);
+
+    max-height: calc(100vh - 280px);
+    overflow: auto;
+
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    
+}
+
+.project-container {
+    background-color: #fafafa;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 16px;
+    width: 100%;
+    min-height: 145px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.project-header {
+    display: flex;  
+    justify-content: space-between;   
+    align-items: center;
+
+    margin-bottom: 10px;
+}
+
+.project-header-title {
+    font-size: 18px;
+    font-weight: bold;
+
+}
+
+.project-header-progress {
+    font-weight: bold;
+    color: rgb(190, 69, 69);
+    background-color: rgb(245, 220, 220);
+    padding: 5px 10px;
+    border-radius: 15px;
+}
+
+.project-desc {
+    color: rgb(81, 78, 78);
+    margin-bottom: 10px;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.project-tags {
+    display: flex;
+    gap: 5px;
+
+    margin-top: auto;
+}
+
+.project-tag {
+    font-size: 14px;
+    padding: 5px 10px;
+    background-color: lightblue;
+    border-radius: 15px;
+}
+
+
+/*
+modal is genereated by chatGPT
+*/
+
+.modal-bg {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.35);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-box {
+    width: 420px;
+    background-color: white;
+    padding: 24px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.modal-box input,
+.modal-box textarea,
+.modal-box select {
+    font-size: 16px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.modal-box textarea {
+    min-height: 90px;
+    resize: vertical;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.modal-buttons button {
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+}
