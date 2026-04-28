@@ -1,13 +1,10 @@
 import "./SkillsBar.css";
-import { Pencil, Trash2, Check, X } from "lucide-react";
-import { useRef } from "react";
+import { Pencil, Trash2} from "lucide-react";
 import axios from "axios";
+import AddSkillView from "./AddSkillView"
 
 export default function SkillsBar({ skillsData, setSkillsData }) {
   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
-
-  const nameRef = useRef(null);
-  const levelRef = useRef(null);
 
   const deleteSkill = (skillId) => {
     setSkillsData((prev) => {
@@ -33,29 +30,29 @@ export default function SkillsBar({ skillsData, setSkillsData }) {
     }));
   };
 
-  const saveSkill = () => {
+  const saveSkill = (skillId, nameRef, levelRef) => {
     if (!nameRef.current.reportValidity()) return;
     if (!levelRef.current.reportValidity()) return;
     const newSkill = {
       name: nameRef.current.value,
       level: levelRef.current.value,
       isNew: false,
-      id: Math.random(),
+      id: skillId,
     };
     setSkillsData((prev) => {
       const updated = {
         ...prev,
-        skills: prev.skills.map((skill) => (skill.isNew ? newSkill : skill)),
+        skills: prev.skills.map((skill) => (skill.id === skillId ? newSkill : skill)),
       };
       axios.put(`${API_BASE_URL}/users/${prev.id}`, updated);
       return updated;
     });
   };
 
-  const cancelNewSkill = () => {
+  const cancelNewSkill = (skillId) => {
     setSkillsData((prev) => ({
       ...prev,
-      skills: prev.skills.filter((skill) => !skill.isNew),
+      skills: prev.skills.filter((skill) => skill.id !== skillId),
     }));
   };
 
@@ -71,39 +68,14 @@ export default function SkillsBar({ skillsData, setSkillsData }) {
       <div className="skills-list">
         {skillsData.map((skill) =>
           skill.isNew ? (
-            <div key={skill.id} className="skill-item">
-              <div className="skill-inputs">
-                <input
-                  required
-                  className="skill-name-input"
-                  placeholder="Skill name"
-                  ref={nameRef}
-                />
-                <input
-                  required
-                  className="level-input"
-                  placeholder="Level"
-                  ref={levelRef}
-                />
-              </div>
-              <div className="skill-buttons">
-                <button
-                  className="skill-right-button"
-                  onClick={() => saveSkill(skill)}
-                >
-                  <Check size={18} />
-                </button>
-
-                <button
-                  className="skill-right-button"
-                  onClick={() => cancelNewSkill()}
-                >
-                  <X size={18} />
-                </button>
-              </div>
-            </div>
+            <AddSkillView
+    key={skill.id}
+    skill={skill}
+    saveSkill={saveSkill}
+    cancelNewSkill={cancelNewSkill}
+  />
           ) : (
-            <div key={skill.name} className="skill-item">
+            <div key={skill.id} className="skill-item">
               <div className="skill-header">
                 <span>{skill.name}</span>
 

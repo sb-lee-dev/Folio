@@ -59,20 +59,3 @@
   cursor: pointer;
   height: 35px;
 }
-.skill-inputs {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 6px;
-}
-.skill-name-input {
-  border: 1px solid #d0cfcf;
-  padding: 8px 14px;
-  border-radius: 8px;
-}
-.level-input {
-  border: 1px solid #d0cfcf;
-  padding: 8px 14px;
-  border-radius: 8px;
-  width: 36px;
-
-}
