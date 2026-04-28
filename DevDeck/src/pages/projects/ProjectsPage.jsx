@@ -23,15 +23,11 @@ export default function ProjectsPage() {
     getUser();
   }, [userId]);
 
-  const [currentProject, setCurrentProject] = useState({
-    title: "",
-    description: "",
-    tags: "",
-    progress: "",
-  });
+  const [currentProject, setCurrentProject] = useState(null);
 
   const openProjectDetail = (project) => {
     setCurrentProject({
+      ...project,
       title: project.title,
       description: project.description,
       tags: project.tags,
@@ -70,8 +66,12 @@ export default function ProjectsPage() {
                   </div>
                   <div className="project-desc">{project.description}</div>
                   <div className="project-tags">
-                    {project.tags.map((tag) => {
-                      return <div className="project-tag">{tag}</div>;
+                    {project.tags.map((tag, index) => {
+                      return (
+                        <div key={index} className="project-tag">
+                          {tag}
+                        </div>
+                      );
                     })}
                   </div>
                 </div>
@@ -93,6 +93,8 @@ export default function ProjectsPage() {
             currentProject={currentProject}
             setCurrentProject={setCurrentProject}
             setIsDetailModalOpen={setIsDetailModalOpen}
+            setUser={setUser}
+            user={user}
           />
         )}
       </>
