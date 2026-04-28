@@ -9,6 +9,7 @@ export default function ProjectEditModal({
   currentProject,
   setCurrentProject,
   setIsEditing,
+  deleteItem,
 }) {
   const { userId } = useParams();
   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
@@ -88,6 +89,7 @@ export default function ProjectEditModal({
       />
 
       <div className="modal-buttons">
+        <button onClick={deleteItem}>Delete</button>
         <button onClick={modifyProject}>Edit</button>
         <button onClick={() => setIsEditing(false)}>Cancel</button>
       </div>

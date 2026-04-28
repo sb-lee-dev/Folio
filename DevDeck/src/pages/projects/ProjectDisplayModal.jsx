@@ -6,6 +6,7 @@ export default function ProjectDisplayModal({
   currentProject,
   setIsEditing,
   closeModal,
+  deleteItem,
 }) {
   return (
     <Fragment>
@@ -31,6 +32,7 @@ export default function ProjectDisplayModal({
       </div>
 
       <div className="modal-buttons">
+        <button onClick={deleteItem}>Delete</button>
         <button onClick={() => setIsEditing(true)}>Edit</button>
         <button onClick={closeModal}>Close</button>
       </div>
