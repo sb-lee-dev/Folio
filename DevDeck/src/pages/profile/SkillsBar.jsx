@@ -1,9 +1,11 @@
 import "./SkillsBar.css";
-import { Pencil, Trash2} from "lucide-react";
+import { Pencil, Trash2 } from "lucide-react";
 import axios from "axios";
-import AddSkillView from "./AddSkillView"
+import { useState } from "react";
+import SkillAddEditView from "./SkillAddEditView";
 
 export default function SkillsBar({ skillsData, setSkillsData }) {
+  const [editingId, setEditingId] = useState(null);
   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
   const deleteSkill = (skillId) => {
@@ -20,7 +22,7 @@ export default function SkillsBar({ skillsData, setSkillsData }) {
   const addNewSkill = () => {
     const newSkill = {
       name: "",
-      level: "0",
+      level: "",
       isNew: true,
       id: Math.random(),
     };
@@ -30,23 +32,21 @@ export default function SkillsBar({ skillsData, setSkillsData }) {
     }));
   };
 
-  const saveSkill = (skillId, nameRef, levelRef) => {
+  const saveSkill = (copySkill, nameRef, levelRef) => {
     if (!nameRef.current.reportValidity()) return;
     if (!levelRef.current.reportValidity()) return;
-    const newSkill = {
-      name: nameRef.current.value,
-      level: levelRef.current.value,
-      isNew: false,
-      id: skillId,
-    };
+    const newSkill = { ...copySkill, isNew: false };
     setSkillsData((prev) => {
       const updated = {
         ...prev,
-        skills: prev.skills.map((skill) => (skill.id === skillId ? newSkill : skill)),
+        skills: prev.skills.map((skill) =>
+          skill.id === copySkill.id ? newSkill : skill,
+        ),
       };
       axios.put(`${API_BASE_URL}/users/${prev.id}`, updated);
       return updated;
     });
+    setEditingId(null);
   };
 
   const cancelNewSkill = (skillId) => {
@@ -67,13 +67,15 @@ export default function SkillsBar({ skillsData, setSkillsData }) {
       </div>
       <div className="skills-list">
         {skillsData.map((skill) =>
-          skill.isNew ? (
-            <AddSkillView
-    key={skill.id}
-    skill={skill}
-    saveSkill={saveSkill}
-    cancelNewSkill={cancelNewSkill}
-  />
+          skill.isNew || editingId === skill.id ? (
+            <SkillAddEditView
+              key={skill.id}
+              skill={skill}
+              saveSkill={saveSkill}
+              cancelNewSkill={
+                skill.isNew ? cancelNewSkill : () => setEditingId(null)
+              }
+            />
           ) : (
             <div key={skill.id} className="skill-item">
               <div className="skill-header">
@@ -89,7 +91,7 @@ export default function SkillsBar({ skillsData, setSkillsData }) {
               </div>
               <div className="skill-buttons">
                 <button className="skill-right-button">
-                  <Pencil size={18} />
+                  <Pencil size={18} onClick={() => setEditingId(skill.id)} />
                 </button>
                 <button
                   className="skill-right-button"
