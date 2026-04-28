@@ -2,13 +2,15 @@ import { useEffect, useState } from "react";
 import "./ProjectsPage.css";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import ProjectAddModal from "./ProjectAddModal";
+import ProjectDetailModal from "./ProjectDetailModal";
 
 export default function ProjectsPage() {
   const { userId } = useParams();
-  const [user, setUser] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+  const [user, setUser] = useState(null);
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [isDetailModalOpen, setIsDetailModalOpen] = useState(false);
 
   useEffect(() => {
     const getUser = async () => {
@@ -21,55 +23,21 @@ export default function ProjectsPage() {
     getUser();
   }, [userId]);
 
-  const [newProject, setNewProject] = useState({
+  const [currentProject, setCurrentProject] = useState({
     title: "",
     description: "",
     tags: "",
-    progress: "In progress",
+    progress: "",
   });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-
-    setNewProject({
-      ...newProject,
-      [name]: value,
+  const openProjectDetail = (project) => {
+    setCurrentProject({
+      title: project.title,
+      description: project.description,
+      tags: project.tags,
+      progress: project.progress,
     });
-  };
-
-  const addProject = async () => {
-    const projectToAdd = {
-      id: Math.random(),
-      title: newProject.title,
-      description: newProject.description,
-      tags: newProject.tags.split(",").map((tag) => tag.trim()),
-      progress: newProject.progress,
-    };
-
-    const updatedUser = {
-      ...user,
-      projects: [projectToAdd, ...user.projects],
-    };
-
-    await axios.put(`${API_BASE_URL}/users/${userId}`, updatedUser);
-    setUser(updatedUser);
-    setIsModalOpen(false);
-    setNewProject({
-      title: "",
-      description: "",
-      tags: "",
-      progress: "In progress",
-    });
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-    setNewProject({
-      title: "",
-      description: "",
-      tags: "",
-      progress: "In progress",
-    });
+    setIsDetailModalOpen(true);
   };
 
   return (
@@ -81,7 +49,7 @@ export default function ProjectsPage() {
           <div className="projects-title">My Projects</div>
           <div
             className="projects-title-button"
-            onClick={() => setIsModalOpen(true)}
+            onClick={() => setIsAddModalOpen(true)}
           >
             + Add Project
           </div>
@@ -90,7 +58,10 @@ export default function ProjectsPage() {
           {user &&
             user.projects.map((project) => {
               return (
-                <div className="project-container">
+                <div
+                  className="project-container"
+                  onClick={() => openProjectDetail(project)}
+                >
                   <div className="project-header">
                     <div className="project-header-title">{project.title}</div>
                     <div className="project-header-progress">
@@ -109,48 +80,20 @@ export default function ProjectsPage() {
         </div>
 
         {/*modal template is genereated by chatGPT*/}
-        {isModalOpen && (
-          <div className="modal-bg">
-            <div className="modal-box">
-              <h2>Add Project</h2>
+        {isAddModalOpen && (
+          <ProjectAddModal
+            setIsAddModalOpen={setIsAddModalOpen}
+            setUser={setUser}
+            user={user}
+          />
+        )}
 
-              <input
-                name="title"
-                placeholder="Project title"
-                value={newProject.title}
-                onChange={handleChange}
-              />
-
-              <textarea
-                name="description"
-                placeholder="Project description"
-                value={newProject.description}
-                onChange={handleChange}
-              />
-
-              <input
-                name="tags"
-                placeholder="Tags: React, CSS, API"
-                value={newProject.tags}
-                onChange={handleChange}
-              />
-
-              <select
-                name="progress"
-                value={newProject.progress}
-                onChange={handleChange}
-              >
-                <option>In progress</option>
-                <option>Completed</option>
-                <option>Planning</option>
-              </select>
-
-              <div className="modal-buttons">
-                <button onClick={closeModal}>Cancel</button>
-                <button onClick={addProject}>Save</button>
-              </div>
-            </div>
-          </div>
+        {isDetailModalOpen && (
+          <ProjectDetailModal
+            currentProject={currentProject}
+            setCurrentProject={setCurrentProject}
+            setIsDetailModalOpen={setIsDetailModalOpen}
+          />
         )}
       </>
     </>

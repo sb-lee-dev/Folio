@@ -64,6 +64,7 @@
 
 .project-header-progress {
     font-weight: bold;
+    
     color: rgb(190, 69, 69);
     background-color: rgb(245, 220, 220);
     padding: 5px 10px;
@@ -110,7 +111,8 @@ modal is genereated by chatGPT
 }
 
 .modal-box {
-    width: 420px;
+    width: 80%;
+    max-width: 700px;
     background-color: white;
     padding: 24px;
     border-radius: 15px;
@@ -129,7 +131,7 @@ modal is genereated by chatGPT
 }
 
 .modal-box textarea {
-    min-height: 90px;
+    min-height: 40vh;
     resize: vertical;
 }
 
@@ -143,4 +145,34 @@ modal is genereated by chatGPT
     padding: 8px 16px;
     border-radius: 8px;
     cursor: pointer;
+}
+
+.modal-project-title {
+    margin: 0;
+    /* padding-bottom: 5px; */
+}
+
+.modal-desc {
+    max-height: 300px;
+    height: 100vh;
+    /* background-color: pink; */
+    margin: 0px;
+    overflow-y: auto;
+
+    padding-bottom: 10px;
+    border-bottom: 1px solid lightgray;
+}
+
+.project-tags-underline {
+    padding-bottom: 5px;
+    border-bottom: 1px solid lightgray;
+}
+
+.modal-project-header {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border-bottom: 1px solid lightgray;
+    padding-bottom: 10px;
 }
