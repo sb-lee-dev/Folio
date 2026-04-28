@@ -9,11 +9,11 @@ export default function SkillsBar({ skillsData, setSkillsData }) {
   const nameRef = useRef(null);
   const levelRef = useRef(null);
 
-  const deleteSkill = (skillName) => {
+  const deleteSkill = (skillId) => {
     setSkillsData((prev) => {
       const updated = {
         ...prev,
-        skills: prev.skills.filter((skill) => skill.name !== skillName),
+        skills: prev.skills.filter((skill) => skill.id !== skillId),
       };
       axios.put(`${API_BASE_URL}/users/${prev.id}`, updated);
       return updated;
@@ -23,8 +23,9 @@ export default function SkillsBar({ skillsData, setSkillsData }) {
   const addNewSkill = () => {
     const newSkill = {
       name: "",
-      level: 0,
+      level: "0",
       isNew: true,
+      id: Math.random(),
     };
     setSkillsData((prev) => ({
       ...prev,
@@ -33,10 +34,13 @@ export default function SkillsBar({ skillsData, setSkillsData }) {
   };
 
   const saveSkill = () => {
+    if (!nameRef.current.reportValidity()) return;
+    if (!levelRef.current.reportValidity()) return;
     const newSkill = {
       name: nameRef.current.value,
       level: levelRef.current.value,
       isNew: false,
+      id: Math.random(),
     };
     setSkillsData((prev) => {
       const updated = {
@@ -67,14 +71,16 @@ export default function SkillsBar({ skillsData, setSkillsData }) {
       <div className="skills-list">
         {skillsData.map((skill) =>
           skill.isNew ? (
-            <div key={skill.name} className="skill-item">
+            <div key={skill.id} className="skill-item">
               <div className="skill-inputs">
                 <input
+                  required
                   className="skill-name-input"
                   placeholder="Skill name"
                   ref={nameRef}
                 />
                 <input
+                  required
                   className="level-input"
                   placeholder="Level"
                   ref={levelRef}
@@ -116,7 +122,7 @@ export default function SkillsBar({ skillsData, setSkillsData }) {
                 <button
                   className="skill-right-button"
                   style={{ border: "1px solid #f0c5c0" }}
-                  onClick={() => deleteSkill(skill.name)}
+                  onClick={() => deleteSkill(skill.id)}
                 >
                   <Trash2 size={18} color="red" />
                 </button>
