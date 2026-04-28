@@ -28,7 +28,6 @@ export default function ProfilePage() {
     const getUserData = async () => {
       const response = await axios.get(`${API_BASE_URL}/users/${userId}`);
       setUserData(response.data);
-      console.log("API RESPONSE:", response.data);
     };
     getUserData();
   }, [userId]);
@@ -69,7 +68,7 @@ export default function ProfilePage() {
           </div>
         </div>
       )}
-      <SkillsBar skillsData={userData.skills} />
+      <SkillsBar skillsData={userData.skills} setSkillsData={setUserData}/>
     </div>
   );
 }
