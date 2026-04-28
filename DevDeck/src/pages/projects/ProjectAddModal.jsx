@@ -1,7 +1,7 @@
 import { useState } from "react";
-import "./ProjectsPage.css";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import "./ProjectsModal.css";
 
 export default function ProjectAddModal({ user, setUser, setIsAddModalOpen }) {
   const { userId } = useParams();

@@ -1,4 +1,6 @@
 import { Fragment } from "react";
+import "./ProjectsModal.css";
+import "./ProjectDisplayModal.css";
 
 export default function ProjectDisplayModal({
   currentProject,

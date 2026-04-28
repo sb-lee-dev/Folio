@@ -1,6 +1,7 @@
 import axios from "axios";
 import { Fragment, useState } from "react";
 import { useParams } from "react-router-dom";
+import "./ProjectsModal.css";
 
 export default function ProjectEditModal({
   user,

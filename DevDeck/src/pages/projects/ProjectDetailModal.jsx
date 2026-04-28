@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ProjectEditModal from "./ProjectEditModal";
 import ProjectDisplayModal from "./ProjectDisplayModal";
+import "./ProjectsModal.css";
 
 export default function ProjectDetailModal({
   user,

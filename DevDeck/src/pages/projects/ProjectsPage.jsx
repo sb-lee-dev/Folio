@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import "./ProjectsPage.css";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import ProjectAddModal from "./ProjectAddModal";
 import ProjectDetailModal from "./ProjectDetailModal";
+import "./ProjectsPage.css";
+import "./ProjectsModal.css";
 
 export default function ProjectsPage() {
   const { userId } = useParams();
