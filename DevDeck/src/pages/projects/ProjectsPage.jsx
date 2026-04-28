@@ -56,6 +56,7 @@ export default function ProjectsPage() {
             user.projects.map((project) => {
               return (
                 <div
+                  key={project.id}
                   className="project-container"
                   onClick={() => openProjectDetail(project)}
                 >

@@ -13,8 +13,11 @@ export default function ProjectEditModal({
 }) {
   const { userId } = useParams();
   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
-
-  const [tempTags, setTempTags] = useState([...currentProject.tags]);
+  const [tagsInput, setTagsInput] = useState(
+    Array.isArray(currentProject.tags)
+      ? currentProject.tags.join(", ")
+      : currentProject.tags,
+  );
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -25,10 +28,6 @@ export default function ProjectEditModal({
     });
   };
 
-  const handleTagsChange = (e) => {
-    setTempTags(e.target.value);
-  };
-
   const modifyProject = async () => {
     const updatedUser = {
       ...user,
@@ -36,7 +35,10 @@ export default function ProjectEditModal({
         project.id === currentProject.id
           ? {
               ...currentProject,
-              tags: tempTags.split(",").map((tag) => tag.trim()),
+              tags: tagsInput
+                .split(",")
+                .map((tag) => tag.trim())
+                .filter((tag) => tag !== ""),
             }
           : project,
       ),
@@ -46,7 +48,10 @@ export default function ProjectEditModal({
     setUser(updatedUser);
     setCurrentProject({
       ...currentProject,
-      tags: tempTags.split(",").map((tag) => tag.trim()),
+      tags: tagsInput
+        .split(",")
+        .map((tag) => tag.trim())
+        .filter((tag) => tag !== ""),
     });
     setIsEditing(false);
   };
@@ -84,8 +89,8 @@ export default function ProjectEditModal({
       <input
         name="tags"
         placeholder="Tags: React, CSS, API"
-        value={tempTags}
-        onChange={handleTagsChange}
+        value={tagsInput}
+        onChange={(e) => setTagsInput(e.target.value)}
       />
 
       <div className="modal-buttons">

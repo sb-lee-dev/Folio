@@ -26,8 +26,12 @@ export default function ProjectDisplayModal({
 
       <div className="project-tags project-tags-underline">
         {currentProject &&
-          currentProject.tags.map((tag) => {
-            return <div className="project-tag">{tag}</div>;
+          currentProject.tags.map((tag, index) => {
+            return (
+              <div key={index} className="project-tag">
+                {tag}
+              </div>
+            );
           })}
       </div>
 
