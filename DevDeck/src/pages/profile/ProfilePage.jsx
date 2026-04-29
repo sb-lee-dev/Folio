@@ -4,14 +4,7 @@ import axios from "axios";
 import "./ProfilePage.css";
 import ProfileEditView from "./ProfileEditView";
 import SkillsBar from "./SkillsBar";
-
-function getInitials(name) {
-  return name
-    .split(" ")
-    .slice(0, 2)
-    .map((word) => word[0])
-    .join("");
-}
+import { getInitials } from "../../utils/getInitials";
 
 export default function ProfilePage() {
   const { userId } = useParams();
