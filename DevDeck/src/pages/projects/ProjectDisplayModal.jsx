@@ -36,9 +36,18 @@ export default function ProjectDisplayModal({
       </div>
 
       <div className="modal-buttons">
-        <button onClick={deleteItem}>Delete</button>
-        <button onClick={() => setIsEditing(true)}>Edit</button>
-        <button onClick={closeModal}>Close</button>
+        <button className="modal-delete-button" onClick={deleteItem}>
+          Delete
+        </button>
+        <button
+          className="modal-edit-button"
+          onClick={() => setIsEditing(true)}
+        >
+          Edit
+        </button>
+        <button className="modal-cancel-button" onClick={closeModal}>
+          Close
+        </button>
       </div>
     </Fragment>
   );

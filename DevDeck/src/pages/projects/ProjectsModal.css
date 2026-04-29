@@ -48,3 +48,33 @@ modal is genereated by chatGPT
     border-radius: 8px;
     cursor: pointer;
 }
+
+.modal-edit-button {
+    color: #5538c8;
+    border: 1px solid #5538c8;
+    background-color: white;
+}
+
+.modal-edit-button:hover {
+    background-color: #f1edff;
+}
+
+.modal-delete-button {
+    color: #dc2626;
+    border: 1px solid #e97575;
+    background-color: #fee2e2;
+}
+
+.modal-delete-button:hover {
+    background-color: #fecaca;
+}
+
+.modal-cancel-button {
+    color: #374151;
+    border: 1px solid #d1d5db;
+    background-color: white;
+}
+
+.modal-cancel-button:hover {
+    background-color: #f3f4f6;
+}

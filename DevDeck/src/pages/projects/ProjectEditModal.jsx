@@ -2,6 +2,7 @@ import axios from "axios";
 import { Fragment, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./ProjectsModal.css";
+import "./ProjectEditModal.css";
 
 export default function ProjectEditModal({
   user,
@@ -54,6 +55,7 @@ export default function ProjectEditModal({
         .filter((tag) => tag !== ""),
     });
     setIsEditing(false);
+    alert("Project updated successfully.");
   };
 
   return (
@@ -94,9 +96,18 @@ export default function ProjectEditModal({
       />
 
       <div className="modal-buttons">
-        <button onClick={deleteItem}>Delete</button>
-        <button onClick={modifyProject}>Edit</button>
-        <button onClick={() => setIsEditing(false)}>Cancel</button>
+        <button className="modal-delete-button" onClick={deleteItem}>
+          Delete
+        </button>
+        <button className="modal-edit-button" onClick={modifyProject}>
+          Save
+        </button>
+        <button
+          className="modal-cancel-button"
+          onClick={() => setIsEditing(false)}
+        >
+          Cancel
+        </button>
       </div>
     </Fragment>
   );

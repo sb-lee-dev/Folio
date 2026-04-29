@@ -46,6 +46,8 @@ export default function ProjectAddModal({ user, setUser, setIsAddModalOpen }) {
       tags: "",
       progress: "In progress",
     });
+
+    alert("Project added successfully.");
   };
 
   const closeModal = () => {

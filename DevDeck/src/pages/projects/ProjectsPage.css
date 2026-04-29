@@ -15,8 +15,12 @@
     color: white;
     border-radius: 10px;
     padding: 10px 20px;
-    background-color: rgb(76, 51, 185);
+    background-color: #5538c8;
     cursor: pointer;
+}
+
+.projects-title-button:hover {
+    background-color: #4326b5;
 }
 
 .projects-container {
@@ -46,6 +50,8 @@
 
     display: flex;
     flex-direction: column;
+
+    cursor: pointer;
 }
 
 .project-header {

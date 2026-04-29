@@ -31,6 +31,7 @@ export default function ProjectDetailModal({
       return updated;
     });
     setIsDetailModalOpen(false);
+    alert("Project deleted successfully.");
   };
 
   return (
