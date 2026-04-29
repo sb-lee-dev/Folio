@@ -60,6 +60,11 @@
     font-size: 18px;
     font-weight: bold;
 
+    max-width: 320px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
 }
 
 .project-header-progress {
