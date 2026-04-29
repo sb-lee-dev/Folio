@@ -18,6 +18,8 @@
     margin: 0px;
     overflow-y: auto;
 
+    white-space: pre-line;
+
     padding-bottom: 10px;
     border-bottom: 1px solid lightgray;
 }
