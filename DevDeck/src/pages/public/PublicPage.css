@@ -1,0 +1,36 @@
+.profile-container {
+  background-color: #eeedfe;
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 20px;
+}
+.icon {
+  border-radius: 50%;
+  color: #3c3489;
+  font-weight: 600;
+  font-size: 22px;
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+.profile-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+.profile-details h3,
+.profile-details p {
+  margin: 0;
+}
+.profile-details p,
+.profile-links {
+    font-size: 14px;
+    color: #3c3489;
+}
+.profile-links {
+    margin-top: 12px;
+    display: flex;
+    gap: 14px;
+}
