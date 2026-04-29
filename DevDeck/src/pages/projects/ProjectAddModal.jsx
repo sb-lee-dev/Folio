@@ -24,11 +24,23 @@ export default function ProjectAddModal({ user, setUser, setIsAddModalOpen }) {
   };
 
   const addProject = async () => {
+    if (
+      !newProject.title.trim() ||
+      !newProject.description.trim() ||
+      !newProject.tags.trim()
+    ) {
+      alert("Please fill in title, description, and tags.");
+      return;
+    }
+
     const projectToAdd = {
       id: Math.random(),
       title: newProject.title,
       description: newProject.description,
-      tags: newProject.tags.split(",").map((tag) => tag.trim()),
+      tags: newProject.tags
+        .split(",")
+        .map((tag) => tag.trim())
+        .filter((tag) => tag !== ""),
       progress: newProject.progress,
     };
 
@@ -97,8 +109,12 @@ export default function ProjectAddModal({ user, setUser, setIsAddModalOpen }) {
         </select>
 
         <div className="modal-buttons">
-          <button onClick={closeModal}>Cancel</button>
-          <button onClick={addProject}>Save</button>
+          <button className="modal-edit-button" onClick={addProject}>
+            Save
+          </button>
+          <button className="modal-cancel-button" onClick={closeModal}>
+            Cancel
+          </button>
         </div>
       </div>
     </div>
