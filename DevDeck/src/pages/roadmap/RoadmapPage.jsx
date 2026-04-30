@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { sortRoadmap } from "../../utils/sortRoadmap";
+import AddButton from "../../components/AddButton";
 
 export default function RoadmapPage() {
   const { userId } = useParams();
@@ -67,9 +68,7 @@ export default function RoadmapPage() {
 
       <div className="roadmap-title-container">
         <div className="roadmap-title">Learning Roadmap</div>
-        <div className="roadmap-title-button" onClick={addRoadmap}>
-          + Add topic
-        </div>
+        <AddButton onClick={addRoadmap} fontSize={"18px"} item={"Topic"} />
       </div>
       <div className="roadmap-skills-container">
         {user && user.roadmap.length > 0 ? (

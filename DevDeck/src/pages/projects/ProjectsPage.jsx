@@ -5,6 +5,7 @@ import ProjectAddModal from "./ProjectAddModal";
 import ProjectDetailModal from "./ProjectDetailModal";
 import "./ProjectsPage.css";
 import "./ProjectsModal.css";
+import AddButton from "../../components/AddButton";
 
 export default function ProjectsPage() {
   const { userId } = useParams();
@@ -44,12 +45,11 @@ export default function ProjectsPage() {
 
         <div className="projects-title-container">
           <div className="projects-title">My Projects</div>
-          <div
-            className="projects-title-button"
+          <AddButton
             onClick={() => setIsAddModalOpen(true)}
-          >
-            + Add Project
-          </div>
+            fontSize={"18px"}
+            item={"Project"}
+          />
         </div>
         <div className="projects-container">
           {user &&

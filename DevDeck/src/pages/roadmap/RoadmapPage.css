@@ -10,15 +10,6 @@
     font-weight: bold;
 }
 
-.roadmap-title-button {
-    font-size: 20px;
-    color: white;
-    border-radius: 10px;
-    padding: 10px 20px;
-    background-color: rgb(76, 51, 185);
-    cursor: pointer;
-}
-
 .roadmap-skills-container {
     background-color: white;
     padding: 20px;

@@ -10,19 +10,6 @@
     font-weight: bold;
 }
 
-.projects-title-button {
-    font-size: 20px;
-    color: white;
-    border-radius: 10px;
-    padding: 10px 20px;
-    background-color: #5538c8;
-    cursor: pointer;
-}
-
-.projects-title-button:hover {
-    background-color: #4326b5;
-}
-
 .projects-container {
     background-color: white;
     padding: 20px;

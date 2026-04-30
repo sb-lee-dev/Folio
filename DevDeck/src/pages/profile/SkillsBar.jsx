@@ -3,6 +3,7 @@ import { Pencil, Trash2 } from "lucide-react";
 import axios from "axios";
 import { useState } from "react";
 import SkillAddEditView from "./SkillAddEditView";
+import AddButton from "../../components/AddButton";
 
 export default function SkillsBar({ skillsData, setSkillsData }) {
   const [editingId, setEditingId] = useState(null);
@@ -60,10 +61,7 @@ export default function SkillsBar({ skillsData, setSkillsData }) {
     <div className="skills-container">
       <div className="skills-header">
         <div className="label">Skills</div>
-
-        <div className="add-skill-button" onClick={() => addNewSkill()}>
-          + Add Skill
-        </div>
+        <AddButton onClick={addNewSkill} />
       </div>
       <div className="skills-list">
         {skillsData.map((skill) =>
