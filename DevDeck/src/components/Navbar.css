@@ -13,10 +13,10 @@
   background-clip: text;
   cursor: pointer;
 }
-.left-section {
+.right-section {
   margin-left: auto;
   display: flex;
-  gap: 18px;
+  gap: 7px;
 }
 .nav-link {
   color: black;
@@ -30,4 +30,25 @@
 .nav-link:hover {
   background-color: rgb(233, 233, 228);
   color: #1a1a1a;
+}
+
+.nav-avatar {
+  background: #d8d4f2;
+  color: #2f2577;
+  border: 1px solid #9b8fd3;
+
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  margin-left: 10px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-avatar:hover {
+  background: #c9c1ee;
+  border-color: #7b6bc4;
+  cursor: pointer;
 }
