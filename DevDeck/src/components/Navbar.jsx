@@ -1,4 +1,4 @@
-import { Link, useNavigate, useParams } from "react-router";
+import { NavLink, useNavigate, useParams } from "react-router";
 import "./Navbar.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -25,22 +25,22 @@ export default function NavBar() {
       <div className="nav-bar">
         <div className="left-section">
           <span className="logo">
-            <Link to={`/profile/${userId}`}>Folio</Link>
+            <NavLink to={`/profile/${userId}`}>Folio</NavLink>
           </span>
         </div>
         <div className="right-section">
-          <Link className="nav-link" to={`/profile/${userId}`}>
+          <NavLink className="nav-link" to={`/profile/${userId}`}>
             Profile
-          </Link>
-          <Link className="nav-link" to={`/projects/${userId}`}>
+          </NavLink>
+          <NavLink className="nav-link" to={`/projects/${userId}`}>
             Projects
-          </Link>
-          <Link className="nav-link" to={`/roadmap/${userId}`}>
+          </NavLink>
+          <NavLink className="nav-link" to={`/roadmap/${userId}`}>
             Roadmap
-          </Link>
-          <Link className="nav-link" to={`/public/${userId}`}>
+          </NavLink>
+          <NavLink className="nav-link" to={`/public/${userId}`}>
             Public
-          </Link>
+          </NavLink>
           {user ? (
             <div className="nav-avatar" onClick={() => navigate("/")}>
               {user.initials}
