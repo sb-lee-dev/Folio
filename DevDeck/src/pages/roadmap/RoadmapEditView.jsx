@@ -35,6 +35,12 @@ export default function RoadmapEditView({
     });
 
     setIsEditing(false);
+
+    if (copy.isNew) {
+      alert("Roadmap added successfully.");
+    } else {
+      alert("Roadmap updated successfully.");
+    }
   };
 
   const onChangeHandler = (e) => {
@@ -50,7 +56,10 @@ export default function RoadmapEditView({
         roadmap: prev.roadmap.filter((item) => item.id !== data.id),
       };
 
-      axios.put(`${API_BASE_URL}/users/${prev.id}`, updated);
+      if (!copy.isNew) {
+        axios.put(`${API_BASE_URL}/users/${prev.id}`, updated);
+        alert("Roadmap deleted successfully.");
+      }
 
       return updated;
     });

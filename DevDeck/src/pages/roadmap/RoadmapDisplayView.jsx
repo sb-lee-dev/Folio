@@ -22,6 +22,8 @@ export default function RoadmapDisplayView({
 
       return updated;
     });
+
+    alert("Roadmap deleted successfully.");
   };
 
   return (
