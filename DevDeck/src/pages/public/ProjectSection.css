@@ -1,0 +1,44 @@
+.project-headline {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+.project-item {
+  border: 1px solid #e0e0e0;
+  background-color: white;
+  border-radius: 12px;
+  padding: 20px;
+}
+.project-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.project-title {
+  font-size: 16px;
+  font-weight: bold;
+
+  max-width: 320px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.project-progress {
+  font-size: 13px;
+  font-weight: bold;
+  color: rgb(190, 69, 69);
+  background-color: rgb(245, 220, 220);
+  padding: 5px 10px;
+  border-radius: 15px;
+}
+.project-labels {
+  display: flex;
+  gap: 5px;
+  margin-top: auto;
+}
+.project-label {
+  font-size: 13px;
+  padding: 5px 10px;
+  background-color: lightblue;
+  border-radius: 15px;
+}

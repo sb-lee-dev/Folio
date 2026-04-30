@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { getInitials } from "../../utils/getInitials";
 import axios from "axios";
 import "./PublicPage.css";
+import ProjectSection from './ProjectSection';
 
 export default function PublicPage() {
   const { userId } = useParams();
@@ -23,6 +24,7 @@ export default function PublicPage() {
   }, [userId]);
 
   return (
+    <>
     <div className="profile-container">
       <div className="icon">
         {userData.profile.name
@@ -43,5 +45,7 @@ export default function PublicPage() {
         </div>
       </div>
     </div>
+    <ProjectSection projectData={userData.projects}/>
+    </>
   );
 }
