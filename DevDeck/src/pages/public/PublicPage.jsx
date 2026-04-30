@@ -1,8 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { getInitials } from "../../utils/getInitials";
 import axios from "axios";
-import "./PublicPage.css";
+import ProfileSection from "./ProfileSection";
 import ProjectSection from "./ProjectSection";
 import SkillSection from "./SkillSection";
 import RoadmapSection from "./RoadmapSection";
@@ -27,26 +26,7 @@ export default function PublicPage() {
 
   return (
     <>
-      <div className="profile-container">
-        <div className="icon">
-          {userData.profile.name
-            ? getInitials(userData.profile.name)
-            : getInitials("")}
-        </div>
-        <div className="profile-details">
-          <h3 style={{ color: "#3c3489" }}>{userData.profile.name}</h3>
-          <p>{userData.profile.school}</p>
-          <p>{userData.profile.bio}</p>
-          <div className="profile-links">
-            <a href={userData.profile.github} target="_blank">
-              GitHub
-            </a>
-            <a href={userData.profile.linkedin} target="_blank">
-              LinkedIn
-            </a>
-          </div>
-        </div>
-      </div>
+      <ProfileSection profileData={userData.profile} />
       <ProjectSection projectData={userData.projects} />
       <SkillSection skillsData={userData.skills} />
       <RoadmapSection roadmapData={userData.roadmap} />
