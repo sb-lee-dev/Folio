@@ -4,6 +4,7 @@ import { getInitials } from "../../utils/getInitials";
 import axios from "axios";
 import "./PublicPage.css";
 import ProjectSection from './ProjectSection';
+import SkillSection from "./SkillSection";
 
 export default function PublicPage() {
   const { userId } = useParams();
@@ -46,6 +47,7 @@ export default function PublicPage() {
       </div>
     </div>
     <ProjectSection projectData={userData.projects}/>
+    <SkillSection skillsData={userData.skills}/>
     </>
   );
 }
