@@ -18,8 +18,6 @@ export default function NavBar() {
     getUser();
   }, [userId]);
 
-  console.log(user);
-
   return (
     <>
       <div className="nav-bar">

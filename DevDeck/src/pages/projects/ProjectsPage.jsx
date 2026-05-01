@@ -38,7 +38,6 @@ export default function ProjectsPage() {
     setIsDetailModalOpen(true);
   };
 
-  console.log(currentProject);
   return (
     <>
       <>

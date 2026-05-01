@@ -22,8 +22,6 @@ export default function ProjectDisplayModal({
     progressColors.color = "#444";
   }
 
-  console.log(currentProject);
-
   return (
     <Fragment>
       <h2>Project Detail</h2>
