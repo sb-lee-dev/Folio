@@ -8,6 +8,22 @@ export default function ProjectDisplayModal({
   closeModal,
   deleteItem,
 }) {
+  let progressColors = { backgroundColor: "", color: "" };
+  if (currentProject.progress === "Completed") {
+    progressColors.backgroundColor = "#eaf6df";
+    progressColors.color = "#285f13";
+  }
+  if (currentProject.progress === "In progress") {
+    progressColors.backgroundColor = "#f9ead4";
+    progressColors.color = "#6b3d00";
+  }
+  if (currentProject.progress === "Planning") {
+    progressColors.backgroundColor = "#eeeeeb";
+    progressColors.color = "#444";
+  }
+
+  console.log(currentProject);
+
   return (
     <Fragment>
       <h2>Project Detail</h2>
@@ -16,7 +32,11 @@ export default function ProjectDisplayModal({
         <h3 className="modal-project-title">{currentProject.title}</h3>
         <span
           className="project-header-progress"
-          style={{ alignSelf: "flex-start" }}
+          style={{
+            alignSelf: "flex-start",
+            backgroundColor: progressColors.backgroundColor,
+            color: progressColors.color,
+          }}
         >
           {currentProject.progress}
         </span>

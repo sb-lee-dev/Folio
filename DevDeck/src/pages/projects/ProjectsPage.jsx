@@ -38,6 +38,7 @@ export default function ProjectsPage() {
     setIsDetailModalOpen(true);
   };
 
+  console.log(currentProject);
   return (
     <>
       <>
@@ -54,6 +55,20 @@ export default function ProjectsPage() {
         <div className="projects-container">
           {user ? (
             user.projects.map((project) => {
+              let progressColors = { backgroundColor: "", color: "" };
+              if (project.progress === "Completed") {
+                progressColors.backgroundColor = "#eaf6df";
+                progressColors.color = "#285f13";
+              }
+              if (project.progress === "In progress") {
+                progressColors.backgroundColor = "#f9ead4";
+                progressColors.color = "#6b3d00";
+              }
+              if (project.progress === "Planning") {
+                progressColors.backgroundColor = "#eeeeeb";
+                progressColors.color = "#444";
+              }
+
               return (
                 <div
                   key={project.id}
@@ -62,7 +77,13 @@ export default function ProjectsPage() {
                 >
                   <div className="project-header">
                     <div className="project-header-title">{project.title}</div>
-                    <div className="project-header-progress">
+                    <div
+                      className="project-header-progress"
+                      style={{
+                        backgroundColor: progressColors.backgroundColor,
+                        color: progressColors.color,
+                      }}
+                    >
                       {project.progress}
                     </div>
                   </div>
