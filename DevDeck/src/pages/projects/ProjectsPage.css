@@ -11,6 +11,8 @@
 }
 
 .projects-container {
+    position: relative;
+
     background-color: white;
     padding: 20px;
     border-radius: 15px;
@@ -93,7 +95,14 @@
     border-radius: 15px;
 }
 
+.project-display-empty {
+    position: absolute;
+    inset: 0;
 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 
 

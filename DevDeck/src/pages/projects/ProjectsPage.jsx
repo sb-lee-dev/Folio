@@ -52,7 +52,7 @@ export default function ProjectsPage() {
           />
         </div>
         <div className="projects-container">
-          {user &&
+          {user ? (
             user.projects.map((project) => {
               return (
                 <div
@@ -78,7 +78,10 @@ export default function ProjectsPage() {
                   </div>
                 </div>
               );
-            })}
+            })
+          ) : (
+            <div className="project-display-empty">There is no project.</div>
+          )}
         </div>
 
         {/*modal template is genereated by chatGPT*/}
