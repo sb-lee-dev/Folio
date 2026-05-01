@@ -3,6 +3,8 @@
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid #e0e0e0;
+
+    gap: 5px;
 }
 
 .roadmap-skill-left {
@@ -10,6 +12,9 @@
     gap: 15px;
     padding: 10px 0;
     align-items: center;
+
+    flex: 1;
+    min-width: 0;
 }
 
 .roadmap-skill-right {
@@ -29,14 +34,20 @@
 .roadmap-skill-title {
     font-size: 20px;
     margin-bottom: 5px;
+
+    overflow-wrap: anywhere;
 }
 
 .roadmap-skill-desc {
     font-size: 16px;
+
+    overflow-wrap: anywhere;
 }
 
 .roadmap-dot {
     width: 16px;
     height: 16px;
     border-radius: 50%;
+
+    flex-shrink: 0;
 }
