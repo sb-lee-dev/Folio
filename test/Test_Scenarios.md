@@ -3,3 +3,7 @@
 ## TS-PROFILE-01: Verify profile information management
 
 Verify that the selected user's profile information is displayed correctly and can be updated successfully.
+
+## TS-PROJECT-01: Verify project information management 
+
+ Verify that the selected user's project information is displayed correctly and can be updated successfully.
