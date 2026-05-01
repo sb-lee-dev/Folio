@@ -7,6 +7,7 @@ This folder contains manual testing documents for the Folio project.
 - [Test Plan](./Test_Plan.md)
 - [Test Scenarios](./Test_Scenarios.md)
 - [Test Cases](./Test_Cases.md)
+- [Bug Report](./Bug_Report.md)
 - [Test Report](./Test_Report.md)
 
 ## PDF Version
