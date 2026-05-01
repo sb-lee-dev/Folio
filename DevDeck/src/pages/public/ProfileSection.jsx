@@ -14,7 +14,7 @@ export default function ProfileSection({ profileData }) {
         <p>{profileData.school}</p>
         <p>{profileData.bio}</p>
         <div className="profile-links">
-          <a href={profileData.profilgithub} target="_blank">
+          <a href={profileData.github} target="_blank">
             GitHub
           </a>
           <a href={profileData.linkedin} target="_blank">
