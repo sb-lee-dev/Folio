@@ -1,8 +1,9 @@
 // SelectUser.jsx
 import { Link } from "react-router-dom";
-import "./UserSelectorPage.css";
 import { useEffect, useState } from "react";
+import { ClipLoader } from "react-spinners";
 import axios from "axios";
+import "./UserSelectorPage.css";
 
 export default function UserSelector() {
   const [users, setUsers] = useState(null);
@@ -26,7 +27,7 @@ export default function UserSelector() {
         <p>Select a user to view their portfolio.</p>
 
         <div className="user-list">
-          {users &&
+          {users ? (
             users.map((user) => (
               <Link
                 to={`/profile/${user.id}`}
@@ -40,7 +41,12 @@ export default function UserSelector() {
                   <p>{user.role}</p>
                 </div>
               </Link>
-            ))}
+            ))
+          ) : (
+            <div className="spinner-wrapper">
+              <ClipLoader size={35} color="#7b6fd6" />
+            </div>
+          )}
         </div>
       </div>
     </div>
