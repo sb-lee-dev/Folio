@@ -8,4 +8,5 @@
 }
 .roadmap-skill-des {
     font-size: 15px;
+    overflow-wrap: anywhere;
 }
