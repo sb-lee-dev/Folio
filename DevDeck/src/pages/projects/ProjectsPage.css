@@ -83,6 +83,7 @@
 
 .project-tags {
     display: flex;
+    flex-wrap: wrap;
     gap: 5px;
 
     margin-top: auto;
@@ -93,6 +94,7 @@
     padding: 5px 10px;
     background-color: lightblue;
     border-radius: 15px;
+  
 }
 
 .project-display-empty {
@@ -103,9 +105,3 @@
     justify-content: center;
     align-items: center;
 }
-
-
-
-
-
-
