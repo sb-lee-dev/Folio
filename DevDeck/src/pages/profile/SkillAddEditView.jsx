@@ -27,12 +27,16 @@ export default function SkillAddEditView({ skill, saveSkill, cancelNewSkill }) {
         />
         <input
           name="level"
+          type="number"
+          min="0"
+          max="100"
           className="level-input"
           required
           ref={levelRef}
           placeholder="Level"
           value={copySkill.level}
           onChange={onChangeHandler}
+          
         />
       </div>
       <div className="skill-buttons">
