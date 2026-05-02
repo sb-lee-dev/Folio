@@ -12,34 +12,42 @@ export default function ProjectEditModal({
   setIsEditing,
   deleteItem,
 }) {
+  const [copyProject, setCopyProject] = useState(currentProject);
   const { userId } = useParams();
   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
   const [tagsInput, setTagsInput] = useState(
-    Array.isArray(currentProject.tags)
-      ? currentProject.tags.join(", ")
-      : currentProject.tags,
+    Array.isArray(copyProject.tags)
+      ? copyProject.tags.join(", ")
+      : copyProject.tags,
   );
+
+  const formattedTags = tagsInput
+    .split(",")
+    .map((tag) => tag.trim())
+    .filter((tag) => tag !== "");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    setCurrentProject({
-      ...currentProject,
+    setCopyProject({
+      ...copyProject,
       [name]: value,
     });
   };
 
   const modifyProject = async () => {
+    if (!copyProject.title.trim() || !copyProject.description.trim()) {
+      alert("Project title and descriptions are required.");
+      return;
+    }
+
     const updatedUser = {
       ...user,
       projects: user.projects.map((project) =>
-        project.id === currentProject.id
+        project.id === copyProject.id
           ? {
-              ...currentProject,
-              tags: tagsInput
-                .split(",")
-                .map((tag) => tag.trim())
-                .filter((tag) => tag !== ""),
+              ...copyProject,
+              tags: formattedTags,
             }
           : project,
       ),
@@ -48,11 +56,8 @@ export default function ProjectEditModal({
     await axios.put(`${API_BASE_URL}/users/${userId}`, updatedUser);
     setUser(updatedUser);
     setCurrentProject({
-      ...currentProject,
-      tags: tagsInput
-        .split(",")
-        .map((tag) => tag.trim())
-        .filter((tag) => tag !== ""),
+      ...copyProject,
+      tags: formattedTags,
     });
     setIsEditing(false);
     alert("Project updated successfully.");
@@ -60,19 +65,19 @@ export default function ProjectEditModal({
 
   return (
     <Fragment>
-      <h2>Add Project</h2>
+      <h2>Edit Project</h2>
 
       <div style={{ display: "flex", gap: "10px" }}>
         <input
           style={{ flexGrow: 1 }}
           name="title"
           placeholder="Project title"
-          value={currentProject.title}
+          value={copyProject.title}
           onChange={handleChange}
         />
         <select
           name="progress"
-          value={currentProject.progress}
+          value={copyProject.progress}
           onChange={handleChange}
         >
           <option>In progress</option>
@@ -84,7 +89,7 @@ export default function ProjectEditModal({
       <textarea
         name="description"
         placeholder="Project description"
-        value={currentProject.description}
+        value={copyProject.description}
         onChange={handleChange}
       />
 
