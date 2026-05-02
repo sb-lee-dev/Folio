@@ -19,3 +19,7 @@ Verify that the user can add new projects successfully.
 ## TS-ROADMAP-01: Verify roadmap information management 
 
 Verify that the selected user's roadmap information is displayed correctly and can be updated successfully.
+
+## TS-ROADMAP-02: Verify roadmap topic addition management 
+
+Verify that the user can add new roadmap topic successfully.
