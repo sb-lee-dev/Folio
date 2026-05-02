@@ -23,6 +23,7 @@ export default function SkillAddEditView({ skill, saveSkill, cancelNewSkill }) {
           placeholder="Skill name"
           value={copySkill.name}
           onChange={onChangeHandler}
+          maxLength={30}
         />
         <input
           name="level"
