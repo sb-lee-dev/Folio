@@ -20,5 +20,14 @@
 | TC-PROJECT-05 | TS-PROJECT-01 | Verify user can update project tags | User is editing project information | 1. Click on Folio project<br>2. Click Edit button<br>3. Edit tags field<br> 4. Click Save button<br> 5. Click OK button from the alert<br> 6. Click Close button| Tags: React JS | Updated tags should be displayed correctly on Folio card |  | NOT RUN |
 | TC-PROJECT-06 | TS-PROJECT-01 | Verify cancel button does not save changes | User is editing project information | 1. Click on Folio project<br>2. Click Edit button<br>3. Clear project title field<br> 4. Click Cancel button<br> 5. Click Close button| Project title: empty| Original project data should remain unchanged |  | NOT RUN |
 
+## Roadmap Page Test Cases
+
+| Test Case ID | Scenario ID | Test Case Title | Preconditions | Test Steps | Test Data | Expected Result | Actual Result | Status | 
+|---|---|---|---|---|---|---|---|---|
+| TC-ROADMAP-01 | TS-ROADMAP-01 | Verify selected user's roadmap data is displayed | User is selected from the user selection page | 1. Navigate to Roadmap Page | User ID: 1 | The selected user's roadmap topic, description, and status should be displayed correctly |  | NOT RUN |
+| TC-ROADMAP-02 | TS-ROADMAP-01 | Verify user can update roadmap description | User is on the Roadmap Page | 1. Click Edit button of any roadmap topic<br>2. Edit description field<br> 3. Click Save button | Description: Backend Database | Updated description should be saved and displayed |  | NOT RUN |
+| TC-ROADMAP-03 | TS-ROADMAP-01 | Verify user can update roadmap item status | User is on the Roadmap Page | 1. Click on any roadmap topic<br>2. Click Edit button<br>3. Change the status of the topic<br> 4. Click Save button | Status: Done | Updated status should be saved and displayed |  | NOT RUN |
+| TC-ROADMAP-04 | TS-ROADMAP-01 | Verify empty roadmap title field validation | User is editing roadmap topic information | 1. Click on any roadmap topic<br>2. Click Edit button<br>3. Clear title field<br> 4. Click Save button | Project title: empty | The system should prevent saving and show a validation message |  | NOT RUN |
+| TC-ROADMAP-05 | TS-ROADMAP-01 | Verify cancel button does not save changes | User is editing roadmap topic information | 1. Click on any roadmap topic<br>2. Click Edit button<br>3. Clear title field | Roadmap title: empty | Original project data should remain unchanged |  | NOT RUN |
 
 
