@@ -2,17 +2,17 @@
 
 ## Profile Page Test Cases
 
-| Test Case ID | Scenario ID | Test Case Title | Preconditions | Test Steps | Test Data | Expected Result | Actual Result | Status |
-|---|---|---|---|---|---|---|---|---|
+| Test Case ID | Scenario ID | Test Case Title | Preconditions | Test Steps | Test Data | Expected Result | Actual Result | Status | Bug ID (if any) |
+|---|---|---|---|---|---|---|---|---|---|
 | TC-PROFILE-01 | TS-PROFILE-01 | Verify selected user's profile data is displayed | User is selected from the user selection page | 1. Navigate to Profile Page | User ID: 1 | The selected user's name, bio, school, GitHub link, and LinkedIn link should be displayed correctly |  | NOT RUN |
 | TC-PROFILE-02 | TS-PROFILE-01 | Verify user can update profile bio | User is on the Profile Page | 1. Click Edit button<br>2. Update bio field<br>3. Click Save | Bio: QA Tester studying automation testing | Updated bio should be saved and displayed on the Profile Page |  | NOT RUN |
 | TC-PROFILE-03 | TS-PROFILE-01 | Verify empty name field validation | User is editing profile information | 1. Click Edit button<br>2. Clear name field<br>3. Click Save | Name: empty | The system should prevent saving and show a validation message |  | NOT RUN |
 | TC-PROFILE-04 | TS-PROFILE-01 | Verify cancel button does not save changes | User is editing profile information | 1. Click Edit button<br>2. Change bio field<br>3. Click Cancel | Bio: Temporary test bio | Original profile data should remain unchanged |  | NOT RUN |
 | TC-PROFILE-05 | TS-PROFILE-02 | Verify user can add a new skill | User is on the Profile Page | 1. Click Add Skill button<br>2. Enter skill name and level<br>3. Click Save | Skill: Python<br>Level: 60 | New skill should be added and displayed on the Profile Page |  | NOT RUN |
 | TC-PROFILE-06 | TS-PROFILE-02 | Verify user can update skill name with valid text | User is on the Profile Page and a skill exists | 1. Click Edit button for a skill<br>2. Update skill name<br>3. Click Save | Skill: TypeScript | Updated skill name should be saved and displayed correctly |  | NOT RUN |
-| TC-PROFILE-07 | TS-PROFILE-02 | Verify long skill name validation or layout handling | User is editing a skill | 1. Click Edit button for a skill<br>2. Enter a very long single-word skill name<br>3. Click Save | Skill: JavaScript111111111111111111111111111111111111111111111111 | System should prevent invalid input or display the long skill name without breaking the layout |  | NOT RUN |
+| TC-PROFILE-07 | TS-PROFILE-02 | Verify long skill name validation or layout handling | User is editing a skill | 1. Click Edit button for a skill<br>2. Enter a very long single-word skill name<br>3. Click Save | Skill: abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz | System should prevent invalid input or display the long skill name without breaking the layout |  | NOT RUN | [BUG-003](https://github.com/sb-lee-dev/Folio/issues/2) |
 | TC-PROFILE-08 | TS-PROFILE-02 | Verify user can update skill level within valid range | User is editing a skill | 1. Click Edit button for a skill<br>2. Update skill level<br>3. Click Save | Level: 80 | Updated skill level should be saved and progress bar should display correctly |  | NOT RUN |
-| TC-PROFILE-09 | TS-PROFILE-02 | Verify skill level cannot exceed 100% | User is editing a skill | 1. Click Edit button for a skill<br>2. Enter skill level greater than 100<br>3. Click Save | Level: 200 | System should prevent saving a level greater than 100 or show a validation message |  | NOT RUN |
+| TC-PROFILE-09 | TS-PROFILE-02 | Verify skill level cannot exceed 100% | User is editing a skill | 1. Click Edit button for a skill<br>2. Enter skill level greater than 100<br>3. Click Save | Level: 200 | System should prevent saving a level greater than 100 or show a validation message |  | NOT RUN | [BUG-004](https://github.com/sb-lee-dev/Folio/issues/3)
 | TC-PROFILE-10 | TS-PROFILE-02 | Verify user can delete a skill | User is on the Profile Page and a skill exists | 1. Click Delete button for a skill<br>2. Confirm deletion if prompted | Skill: SQL | Selected skill should be removed from the Profile Page |  | NOT RUN |
 
 ## Project Page Test Cases
