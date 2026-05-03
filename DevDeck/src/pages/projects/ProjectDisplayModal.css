@@ -2,6 +2,7 @@
     display:flex;
     justify-content: space-between;
     align-items: center;
+    gap: 12px;
 
     border-bottom: 1px solid lightgray;
     padding-bottom: 10px;
@@ -9,6 +10,10 @@
 
 .modal-project-title {
     margin: 0;
+    overflow: hidden;
+    flex: 1;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .modal-desc {
