@@ -1,0 +1,6 @@
+.roadmap-skill-title > input,
+.roadmap-skill-desc > input {
+    border-radius: 5px;
+    border: 1px solid gray;
+    padding: 2px 5px;
+}
