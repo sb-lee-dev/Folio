@@ -81,7 +81,6 @@ The following items will not be tested:
 - User authentication and login
 - User authorization
 - Real backend database validation
-- Payment features
 - Security testing
 - Performance testing
 - Cross-browser testing beyond the main development browser
