@@ -23,3 +23,7 @@ Verify that the selected user's roadmap information is displayed correctly and c
 ## TS-ROADMAP-02: Verify roadmap topic addition management 
 
 Verify that the user can add new roadmap topic successfully.
+
+## TS-PUBLIC-01: Verify public page display
+
+Verify that the selected user's public portfolio is displayed correctly.
