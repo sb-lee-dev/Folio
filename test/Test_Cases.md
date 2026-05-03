@@ -41,4 +41,14 @@
 | TC-ROADMAP-06 | TS-ROADMAP-02 | Verify add button works and display a new roadmap topic correctly | User is adding a new roadmap topic | 1. Click on Add Topic button<br>2. Add title<br>3. Add Description<br>4. Set status to Learning<br>5. Click Save button| Roadmap title: React<br>Description: UseState, UseRef, Destructuring<br>Status: Learning | New topic should be added successfully and displayed correctly with its data  | New topic added successfully and displayed correctly with its data | PASS |
 | TC-ROADMAP-07 | TS-ROADMAP-02 | Verify empty title and description validation | User is adding a new roadmap topic | 1. Click on Add Topic button<br>2. Click Save button| Roadmap title: empty<br>Description: empty | System should show a validation message | System shows a validation message | PASS |
 
+## Public Page Test Cases
+
+| Test Case ID | Scenario ID | Test Case Title | Preconditions | Test Steps | Test Data | Expected Result | Actual Result | Status | Bug ID (if any) |
+|---|---|---|---|---|---|---|---|---|---|
+| TC-PUBLIC-01 | TS-PUBLIC-01 | Verify selected user's public portfolio page is displayed | User is selected from the user selection page | 1. Navigate to Public Page | User ID: 1 | The selected user's public portfolio page should be displayed correctly |  | Not Run | |
+| TC-PUBLIC-02 | TS-PUBLIC-01 | Verify profile information is displayed on the public page | User is on the Public Page | 1. Check profile section | User ID: 1 | The user's name, bio, school, GitHub link, and LinkedIn link should be displayed correctly |  | Not Run | |
+| TC-PUBLIC-03 | TS-PUBLIC-01 | Verify skills are displayed on the public page | User is on the Public Page | 1. Check profile-skills section | User ID: 1 | The user's skills and skill levels should be displayed correctly |  | Not Run | |
+| TC-PUBLIC-04 | TS-PUBLIC-01 | Verify projects are displayed on the public page | User is on the Public Page | 1. Check projects section | User ID: 1 | The user's project titles, tags, and statuses should be displayed correctly |  | Not Run | |
+| TC-PUBLIC-05 | TS-PUBLIC-01 | Verify roadmap topics are displayed on the public page | User is on the Public Page | 1. Check roadmap section | User ID: 1 | The user's roadmap topics, descriptions, and statuses should be displayed correctly |  | Not Run | |
+| TC-PUBLIC-06 | TS-PUBLIC-01 | Verify external links open correctly from the public page | User is on the Public Page | 1. Click GitHub link<br>2. Click LinkedIn link | GitHub / LinkedIn links | Each external link should open the correct page |  | Not Run | |
 
