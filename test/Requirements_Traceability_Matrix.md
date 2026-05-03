@@ -29,12 +29,12 @@
 | TC-ROADMAP-05   |      |      |      |      |      |      |      |      |      |      |      |  X   |      |      |      |      |      |
 | TC-ROADMAP-06   |      |      |      |      |      |      |      |      |      |      |      |  X   |      |      |      |      |      |
 | TC-ROADMAP-07   |      |      |      |      |      |      |      |      |      |      |      |  X   |      |      |      |      |      |
-| TC-PUBLIC-01   |  x  |      |      |      |      |      |      |      |      |      |      |     |      |      |      |      |      |
-| TC-PUBLIC-02   |      |  x  |      |      |      |      |      |      |      |      |      |     |      |      |      |      |      |
-| TC-PUBLIC-03   |      |      |      |      |      |   x  |      |      |      |      |      |     |      |      |      |      |      |
-| TC-PUBLIC-04   |      |      |      |      |      |      |      |      |      |      |      |     |      |      |      |      |      |
-| TC-PUBLIC-05   |      |      |      |      |      |      |      |      |      |      |      |     |      |      |      |      |      |
-| TC-PUBLIC-06   |      |      |      |      |      |      |      |      |      |      |      |    |      |      |      |      |      |
+| TC-PUBLIC-01   |  x  |      |      |      |      |      |      |      |      |      |      |     |      |      |      |   x  |      |
+| TC-PUBLIC-02   |      |  x  |      |      |      |      |      |      |      |      |      |     |      |      |      |    x |   x  |
+| TC-PUBLIC-03   |      |      |      |      |      |   x  |      |      |      |      |      |     |      |      |      |   x  |  x   |
+| TC-PUBLIC-04   |      |      |      |      |      |      |      |      |      |      |      |     |      |      |      |   x  |  x   |
+| TC-PUBLIC-05   |      |      |      |      |      |      |      |      |      |      |      |     |      |      |      |   x  |  x   |
+| TC-PUBLIC-06   |      |      |      |      |      |      |      |      |      |      |      |    |      |      |      |    x |      |
 
 
 # Functional Requirements
