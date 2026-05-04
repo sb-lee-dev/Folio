@@ -24,10 +24,7 @@
   text-overflow: ellipsis;
 }
 .project-progress {
-  font-size: 13px;
   font-weight: bold;
-  color: rgb(190, 69, 69);
-  background-color: rgb(245, 220, 220);
   padding: 5px 10px;
   border-radius: 15px;
 }

@@ -1,4 +1,5 @@
 import "./ProjectSection.css";
+import { getProgressColors } from "../../utils/getProgressColors";
 
 export default function ProjectSection({ projectData }) {
   return (
@@ -10,7 +11,13 @@ export default function ProjectSection({ projectData }) {
             <div key={index} className="project-item">
               <div className="project-header">
                 <div className="project-title">{project.title}</div>
-                <div className="project-progress">
+                <div
+                  className="project-progress"
+                  style={{
+                    alignSelf: "flex-start",
+                    ...getProgressColors(project.progress),
+                  }}
+                >
                   {project.progress}
                 </div>
               </div>

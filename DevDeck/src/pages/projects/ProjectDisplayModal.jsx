@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import "./ProjectsModal.css";
 import "./ProjectDisplayModal.css";
+import { getProgressColors } from "../../utils/getProgressColors";
 
 export default function ProjectDisplayModal({
   currentProject,
@@ -8,19 +9,7 @@ export default function ProjectDisplayModal({
   closeModal,
   deleteItem,
 }) {
-  let progressColors = { backgroundColor: "", color: "" };
-  if (currentProject.progress === "Completed") {
-    progressColors.backgroundColor = "#eaf6df";
-    progressColors.color = "#285f13";
-  }
-  if (currentProject.progress === "In progress") {
-    progressColors.backgroundColor = "#f9ead4";
-    progressColors.color = "#6b3d00";
-  }
-  if (currentProject.progress === "Planning") {
-    progressColors.backgroundColor = "#eeeeeb";
-    progressColors.color = "#444";
-  }
+  const progressColors = getProgressColors(currentProject.progress);
 
   return (
     <Fragment>
