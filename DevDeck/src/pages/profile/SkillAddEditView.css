@@ -25,3 +25,7 @@
   width: 80px;
 
 }
+.skill-input-right-side {
+  display: flex;
+  gap: 10px;
+}

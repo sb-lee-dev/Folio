@@ -8,9 +8,9 @@ export default function SkillAddEditView({ skill, saveSkill, cancelNewSkill }) {
   const [copySkill, setCopySkill] = useState(skill);
 
   const onChangeHandler = (e) => {
-    const {name, value} = e.target;
-    setCopySkill({...copySkill, [name]: value})
-  }
+    const { name, value } = e.target;
+    setCopySkill({ ...copySkill, [name]: value });
+  };
 
   return (
     <div className="skill-item">
@@ -25,33 +25,34 @@ export default function SkillAddEditView({ skill, saveSkill, cancelNewSkill }) {
           onChange={onChangeHandler}
           maxLength={30}
         />
-        <input
-          name="level"
-          type="number"
-          min="0"
-          max="100"
-          className="level-input"
-          required
-          ref={levelRef}
-          placeholder="Level"
-          value={copySkill.level}
-          onChange={onChangeHandler}
-          
-        />
-      </div>
-      <div className="skill-buttons">
-        <button
-          className="skill-right-button"
-          onClick={() => saveSkill(copySkill, nameRef, levelRef)}
-        >
-          <Check size={18} />
-        </button>
-        <button
-          className="skill-right-button"
-          onClick={() => cancelNewSkill(skill.id)}
-        >
-          <X size={18} />
-        </button>
+        <div className="skill-input-right-side">
+          <div className="skill-buttons">
+            <button
+              className="skill-right-button"
+              onClick={() => saveSkill(copySkill, nameRef, levelRef)}
+            >
+              <Check size={18} />
+            </button>
+            <button
+              className="skill-right-button"
+              onClick={() => cancelNewSkill(skill.id)}
+            >
+              <X size={18} />
+            </button>
+          </div>
+          <input
+            name="level"
+            type="number"
+            min="0"
+            max="100"
+            className="level-input"
+            required
+            ref={levelRef}
+            placeholder="Level"
+            value={copySkill.level}
+            onChange={onChangeHandler}
+          />
+        </div>
       </div>
     </div>
   );

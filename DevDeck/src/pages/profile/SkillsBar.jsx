@@ -78,26 +78,30 @@ export default function SkillsBar({ skillsData, setSkillsData }) {
             <div key={skill.id} className="skill-item">
               <div className="skill-header">
                 <span>{skill.name}</span>
-
-                <span>{skill.level}%</span>
+                <div className="skill-right-side">
+                  <div className="skill-buttons">
+                    <button className="skill-right-button">
+                      <Pencil
+                        size={18}
+                        onClick={() => setEditingId(skill.id)}
+                      />
+                    </button>
+                    <button
+                      className="skill-right-button"
+                      style={{ border: "1px solid #f0c5c0" }}
+                      onClick={() => deleteSkill(skill.id)}
+                    >
+                      <Trash2 size={18} color="red" />
+                    </button>
+                  </div>
+                  <span>{skill.level}%</span>
+                </div>
               </div>
               <div className="percent-bar">
                 <div
                   className="filled-bar"
                   style={{ width: `${skill.level}%` }}
                 ></div>
-              </div>
-              <div className="skill-buttons">
-                <button className="skill-right-button">
-                  <Pencil size={18} onClick={() => setEditingId(skill.id)} />
-                </button>
-                <button
-                  className="skill-right-button"
-                  style={{ border: "1px solid #f0c5c0" }}
-                  onClick={() => deleteSkill(skill.id)}
-                >
-                  <Trash2 size={18} color="red" />
-                </button>
               </div>
             </div>
           ),

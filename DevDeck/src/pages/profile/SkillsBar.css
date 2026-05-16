@@ -14,16 +14,21 @@
 .skills-header {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 8px;
+  margin-bottom: 15px;
 }
 .label {
   font-weight: 600;
 }
-
 .skill-header {
   display: flex;
   justify-content: space-between;
   margin-bottom: 6px;
+  align-items: center;
+}
+.skill-right-side {
+  display: flex;
+  gap: 10px;
+  align-items: center;
 }
 .percent-bar {
   width: 100%;
@@ -36,11 +41,6 @@
   height: 100%;
   border-radius: 10px;
   background-color: #3c3489;
-}
-.skill-buttons {
-  display: flex;
-  gap: 8px;
-  justify-content: end;
 }
 .skill-right-button {
   border: 1px solid #ddd;
