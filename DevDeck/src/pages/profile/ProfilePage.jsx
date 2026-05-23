@@ -45,20 +45,20 @@ export default function ProfilePage() {
             <p>{userData.profile.school}</p>
             <p>{userData.profile.bio}</p>
             <div className="links">
-              <a href={userData.profile.github} target="_blank">
+              <a href={userData.profile.github} target="_blank" rel="noopener noreferrer">
                 GitHub
               </a>
-              <a href={userData.profile.linkedin} target="_blank">
+              <a href={userData.profile.linkedin} target="_blank" rel="noopener noreferrer">
                 LinkedIn
               </a>
             </div>
           </div>
-          <div
+          <button
             className="edit-profile-button"
             onClick={() => setIsEditing(true)}
           >
             Edit
-          </div>
+          </button>
         </div>
       )}
       <SkillsBar skillsData={userData.skills} setSkillsData={setUserData}/>
